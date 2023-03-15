@@ -63,9 +63,9 @@ body{
     position: absolute;
     left: -5px;
 }
-.top-bar{
+/* .top-bar{
     top: 65px;
-}
+} */
 .iphone-screen{
     background: #eee;
     border: 1px solid #fff;
@@ -93,7 +93,6 @@ body{
   }
 .iphone-screen .top{
     display: flex;
-    /* justify-content: space-between; */
     padding: 5px 8px;
 }
 .iphone-screen .top span{
@@ -101,7 +100,6 @@ body{
 }
 .iphone-screen .top label{
     color: #fff;
-    /* margin-left: 6px; */
     font-size: 14px;
 }
 .iphone-screen .top .right i{
