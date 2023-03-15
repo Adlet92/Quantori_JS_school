@@ -120,7 +120,7 @@ body{
     font-size: 70px;
     font-weight: 300px;
 }
-.iphone-screen .time span{
+.iphone-screen .time h2{
     color: #fff;
     font-size: 20px;
     display: inherit;

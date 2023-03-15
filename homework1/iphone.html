@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/c108d3ddb3.js" crossorigin="anonymous"></script>
     <title>Iphone</title>
     <link rel="stylesheet" href="style.css">
@@ -29,8 +29,8 @@
                 </label>
             </div>
             <div class="time">
-                <h1 id="current-time"></h1>
-                <span>Wednesday, 24 September</span>
+                <h1 class="current-time"></h1>
+                <h2 class="current-date"></h2>
             </div>
             <div id="slide">
                 <div></div>
@@ -53,32 +53,31 @@
         </div>
     </div>
     <script>
-        let time = document.getElementById("current-time");
+        // let time = document.getElementById("current-time");
 
-        setInterval(() =>{
-            let d = new Date();
-            time.innerHTML = d.toLocaleTimeString();
-        }, 1000)
+        // setInterval(() =>{
+        //     let d = new Date();
+        //     time.innerHTML = d.toLocaleTimeString();
+        // }, 1000)
+        const timeElement = document.querySelector(".current-time");
+        const dateElement = document.querySelector(".current-date");
 
-        // function updateTime() {
-        // const now = new Date()
-        // const hours = now.getHours()
-        // const minutes = now.getMinutes()
-        // const timeString = ${hours}:${minutes < 10 ? '0' : ''}${minutes}
-        // document.getElementById('time').textContent = timeString
-        // }
+        function formatTime(date){
+            const hours = date.getHours()
+            const minutes = date.getMinutes()
+            return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+        }
+        function formatDate(date){
+            const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            return `${DAYS[date.getDay()]}, ${date.getDate()} ${MONTHS[date.getMonth()]}`;
+        }
+        setInterval(() => {
+            const now = new Date();
 
-        // setInterval(updateTime, 1000)
-
-        // const dateElem = document.getElementById('date')
-        // const date = new Date()
-        // const[month, weekday, day] = [
-        // date.toLocaleString('default', { month: 'long' }),
-        // date.toLocaleString('default', { weekday: 'long' }),
-        // date.getDate()
-        // ]
-        // const dateString = ${weekday}, ${day} ${month};
-        // document.getElementById('date').textContent = dateString
+            timeElement.textContent = formatTime(now);
+            dateElement.textContent = formatDate(now);
+        }, 200);
     </script>
 </body>
 </html>
