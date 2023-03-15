@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale">
+    <script src="https://kit.fontawesome.com/c108d3ddb3.js" crossorigin="anonymous"></script>
+    <title>Iphone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iphone">
+        <div class="iphone-top">
+            <span class="camera"></span>
+            <span class="sensor"></span>
+            <span class="speaker"></span>
+        </div>
+        <div class="top-bar"></div>
+        <div class="iphone-screen">
+            <div class="top">
+                <div id="top-slice"></div>
+                <span>SingTel</span>
+                <label class="left">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                </label>
+                <label class="right">
+                    <i class="fas fa-battery-half"></i>
+                </label>
+            </div>
+            <div class="time">
+                <h1 id="current-time"></h1>
+                <span>Wednesday, 24 September</span>
+            </div>
+            <div id="slide">
+                <div></div>
+                slide to unlock
+            </div>
+            <div id="bottom"></div>
+            <div class="screen-bottom">
+                <i class="fas fa-camera"></i>
+            </div>
+        </div>
+        <div class="buttons">
+            <span class="on-off"></span>
+            <span class="sleep"></span>
+            <span class="up"></span>
+            <span class="down"></span>
+        </div>
+        <div class="bottom-bar"></div>
+        <div class="iphone-bottom">
+            <span></span>
+        </div>
+    </div>
+    <script>
+        let time = document.getElementById("current-time");
+
+        setInterval(() =>{
+            let d = new Date();
+            time.innerHTML = d.toLocaleTimeString();
+        }, 1000)
+
+        // function updateTime() {
+        // const now = new Date()
+        // const hours = now.getHours()
+        // const minutes = now.getMinutes()
+        // const timeString = ${hours}:${minutes < 10 ? '0' : ''}${minutes}
+        // document.getElementById('time').textContent = timeString
+        // }
+
+        // setInterval(updateTime, 1000)
+
+        // const dateElem = document.getElementById('date')
+        // const date = new Date()
+        // const[month, weekday, day] = [
+        // date.toLocaleString('default', { month: 'long' }),
+        // date.toLocaleString('default', { weekday: 'long' }),
+        // date.getDate()
+        // ]
+        // const dateString = ${weekday}, ${day} ${month};
+        // document.getElementById('date').textContent = dateString
+    </script>
+</body>
+</html>

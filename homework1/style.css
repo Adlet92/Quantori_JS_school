@@ -1,0 +1,229 @@
+*, :after, *:before{
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: Helvetica;
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/164210/HelveticaNeue-UltraLight.otf) format('TrueType');
+  font-weight: 300;
+}
+body{
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Helvetica', sans-serif;
+}
+.iphone{
+    border: 5px solid #FFDAB9;
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 50px;
+    height: 780px;
+    width: 423px;
+    position: relative;
+    margin-left: 35%;
+    margin-top: -20px;
+    transform: scale(0.8);
+}
+.iphone-top{
+    padding: 5px 110px 40px;
+    position: relative;
+}
+.iphone-top .speaker{
+    display: block;
+    width: 70px;
+    height: 6px;
+    margin: 0 auto;
+    border-radius: 6px;
+    background: #292728;
+}
+.iphone-top .camera{
+    display: block;
+    margin: 0 auto;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin-bottom: 13px;
+    background: #333;
+}
+.iphone-top .sensor{
+    display: block;
+    width: 15px;
+    height: 15px;
+    float: left;
+    background: #333;
+    margin-top: -5px;
+    border-radius: 50%;
+}
+.top-bar .bottom-bar{
+    display: block;
+    width: 423px;
+    height: 15px;
+    border-left: 5px solid #bbb;
+    border-right: 5px solid #bbb;
+    position: absolute;
+    left: -5px;
+}
+.top-bar{
+    top: 65px;
+}
+.iphone-screen{
+    background: #eee;
+    border: 1px solid #fff;
+    height: 602px;
+    width: 375px;
+    margin: 0 auto;
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 3px;
+    overflow: hidden;
+    background-image: url(images/menu-pic.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.iphone-screen img{
+    width: 100%;
+}
+#top-slice {
+    width: 37px;
+    height: 7px;
+    border-radius: 5px;
+    background: #bbb;
+    position: absolute;
+    top: 13%;
+    left: 45%;
+  }
+.iphone-screen .top{
+    display: flex;
+    /* justify-content: space-between; */
+    padding: 5px 8px;
+}
+.iphone-screen .top span{
+    color: #fff;
+}
+.iphone-screen .top label{
+    color: #fff;
+    /* margin-left: 6px; */
+    font-size: 14px;
+}
+.iphone-screen .top .right i{
+    margin-left: 1564%;
+}
+.iphone-screen .top .left i{
+    margin-left: 6px;
+}
+.iphone-screen .time{
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+.iphone-screen .time h1{
+    color: #f4f2ff;
+    font-size: 70px;
+    font-weight: 300px;
+}
+.iphone-screen .time span{
+    color: #fff;
+    font-size: 20px;
+    display: inherit;
+    margin-top: -12%;
+}
+#bottom {
+    width: 37px;
+    height: 7px;
+    border-radius: 5px;
+    background: #bbb;
+    position: absolute;
+    bottom: 11%;
+    left: 45%;
+  }
+#slide {
+    position: absolute;
+    bottom: 20%;
+    left: 31%;
+    font-size: 28px;
+    color: #bbb;
+    background: -webkit-linear-gradient(left,#bbb 30%,#fff,#bbb 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 350px;
+    animation: slide 3s linear infinite;
+  }
+  
+  @keyframes slide {
+    0% { background-position: 100px 0; }
+    40% { background-position: 440px 0; }
+    100% { background-position: 440px 0; }
+  }
+#slide div {
+    transform: rotate(135deg);
+    border-left: 2px solid #bbb;
+    border-top: 2px solid #bbb;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: -29px;
+    top: 10px;
+  }
+.iphone-screen .screen-bottom{
+    padding: 100% 90%;
+}
+.iphone-screen .screen-bottom i{
+    color: #bbb;
+    font-size: 25px;
+}
+.buttons .on-off, .buttons .up, .buttons .down, 
+.buttons .sleep{
+    display: block;
+    background: #FFDAB9;
+    position: absolute;
+    border-radius: 2px 0px 0px 2px;
+}
+.buttons .on-off{
+    height: 40px;
+    width: 3px;
+    top: 100px;
+    left: -8px;
+}
+.buttons .up, .buttons .down, .buttons .sleep{
+    height: 60px;
+    width: 5px;
+    left: -10px;
+}
+.buttons .up{
+    top: 170px;
+}
+.buttons .down{
+    top: 250px;
+}
+.buttons .sleep{
+    left: auto;
+    right: -10px;
+    top: 170px;
+    border-radius: 0px 2px 2px 0px;
+}
+.iphone-bottom{
+    padding: 10px 0 0;
+}
+.iphone-bottom span{
+    display: block;
+    margin: 0 auto;
+    width: 68px;
+    height: 68px;
+    background: #FFDAB9;
+    border-radius: 50%;
+    background: linear-gradient(135deg #303233 0%,
+                #b5b7b9 50%, #f0f2f2 69%,
+                #303233 100%);
+    position: relative;
+}
+.iphone-bottom  span::after{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+
+}
