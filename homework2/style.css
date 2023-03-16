@@ -1,0 +1,76 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    background: black;
+}
+.logo {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background: transparent;
+    filter: invert(38%) sepia(300%) saturate(900%) hue-rotate(190deg);
+    animation: office 20s 4;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* marquee {
+    height: 100vh;
+} */
+@keyframes office{
+    0% {
+        background-color: red;
+        left: 400px;
+        top: 0px;
+    }
+    25% {
+        background-color: orange;
+        left: 1150px;
+        top: 100px;
+    }
+    75% {
+        background-color: green;
+        left: 0px;
+        top: 407px;
+    }
+    100% {
+        background-color: blue;
+        left: 400px;
+        top: 0px;
+    }
+}
+
+
+/* body{
+    background-color: black;
+}
+.box {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background: red;
+    text-transform: uppercase;
+    animation: office 20s 4;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+h1 {
+    color: black;
+    font: italic 5em sans-serif;
+    letter-spacing: -10px;
+    font-weight: 900;
+    margin: 0 20px;
+    padding-top: 30px;
+}
+p {
+    color: white;
+    font: 2em sans-serif;
+    font-weight: 900;
+    margin: 0 45px;
+} */
