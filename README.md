@@ -1,3 +1,4 @@
+
 # Homework2
 The task of the second homework is to create an animation using HTML and CSS that reproduces the "screensaver" effect of an old DVD player, where a logo smoothly moves across the screen, bounces off the edge, and changes color.
 
