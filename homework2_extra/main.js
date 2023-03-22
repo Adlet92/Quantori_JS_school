@@ -15,25 +15,11 @@ function init() {
   setInterval(frame, 5);
   setInterval(frame2, 4);
 }
-// function init2() {
-//   update_color2();
-//   dvd2.style.position = 'absolute';
-//   setInterval(frame2, 4);
-// }
 
 function update_color() {
-  // let color = Math.round((Math.random() * 100));
-  // dvd.style.backgroundColor = `hsl(${color},100%,50%)`;
   dvd.style.filter = randomcolor();
-  // dvd.style.backgroundColor = 'rgba('+ randomcolor() + ',' + randomcolor() + ',' + randomcolor() + '\)';
-  // const picture = document.querySelector('logo');
-  // const currentColor = getComputedStyle(picture).filter.split(' ')[2].slice(0, -1);
-  // const newColor = randomcolor(currentColor);
-  // picture.style.filter = `opacity(0.5) drop-shadow(0 0 0 ${newColor})`;
 }
-// function randomcolor() {
-//   return Math.floor(Math.random() * 255);
-// }
+
 function update_color2() {
   dvd2.style.filter = randomcolor();
 }
@@ -43,7 +29,6 @@ function playSound(){
   audioElement.play();
 }
 function randomcolor(){
-  // let currentColor = "invert(38%) sepia(300%) saturate(900%) hue-rotate(190deg)";
   let blue = "invert(38%) sepia(300%) saturate(900%) hue-rotate(190deg)";
   let orange = "invert(72%) sepia(32%) saturate(1087%) hue-rotate(335deg) brightness(101%) contrast(103%)";
   let white = "invert(318%) sepia(300%) saturate(900%) hue-rotate(190deg)";
@@ -65,14 +50,6 @@ function randomcolor(){
   let oblako = "invert(92%) sepia(21%) saturate(421%) hue-rotate(106deg) brightness(98%) contrast(111%)";
   let arr = [blue, orange, white, blur, yellow, pink, green, sky, darkBlue, pink2, lightOrange, lightGreen, 
     lightBlue, purple, red, lightRed, lightPink, lightSky, oblako];
-  // let arr = [blue, orange]
-  // let newColor;
-    // do{
-    //   newColor = arr[Math.floor(Math.random() * arr.length)]
-    // }
-    // while(newColor === currentColor)
-    // console.log(currentColor)
-    // return newColor
   let i = arr.length;
   let j = 0;
 
@@ -136,4 +113,3 @@ function frame2() {
 }
 
 init();
-// init2();
