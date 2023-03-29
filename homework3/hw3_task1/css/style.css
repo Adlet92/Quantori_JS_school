@@ -109,7 +109,6 @@ header {
   display: flex;
   width: 100vw;
   position: relative;
-  /* top: 70px; */
   top: 0px;
   z-index: 1;
 }
@@ -118,26 +117,15 @@ header {
 }
  
 .main {
-  height: calc(100vh - 70px);
+  /* height: calc(100vh - 70px); */
+  height: 100%;
   width: 100%;
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
-  padding: 40px 30px 30px 30px;
+  /* padding: 40px 30px 30px 30px; */
 }
 .frame-img {
   width: 100%;
   height: 100%;
 }
-/* .main::-webkit-scrollbar-thumb {
-  background-image:
-        linear-gradient(to bottom, rgb(0, 0, 85), rgb(0, 0, 50));
-} */
-/* .main::-webkit-scrollbar {
-  width: 5px;
-} */
-/* .main::-webkit-scrollbar-track {
-  background-color: #9e9e9eb2;
-} */
  
 .box-container {
   display: flex;
@@ -148,7 +136,6 @@ header {
 }
 .pages {
   padding-left: 20px;
-  /* padding: 20px 20px 20px 20px; */
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
@@ -162,8 +149,7 @@ header {
   background-color: #FFFFFF;
   position: absolute;
   top: 0px;
-  left: 00;
-  /* box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825); */
+  left: 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -174,12 +160,7 @@ header {
   height: calc(100vh - 70px);
   width: 250px;
   position: relative;
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
 }
-/* .navcontainer::-webkit-scrollbar {
-  display: none;
-} */
 .navclose {
   width: 80px;
 }
@@ -194,6 +175,7 @@ header {
 .nav-img {
   height: 15px;
   width: 15px;
+  margin-left: 10px;
 }
  
 .nav-upper-options {
@@ -217,125 +199,59 @@ header {
 .box {
   height: 130px;
   width: 230px;
-  border-radius: 12px;
-  background-color: #FFFFFF;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.06);
-  padding: 20px;
   display: flex;
-  align-items: center;
   justify-content: space-around;
 }
- 
-.box .text {
-  color: 5F6980;
-}
-.topic {
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 1px;
+.box, .banner-img, .chart-img, .table-img {
+  display: none;
 }
  
-.topic-heading {
-  font-size: 30px;
-  letter-spacing: 3px;
-}
- 
-.report-container {
-  min-height: 300px;
-  max-width: 1200px;
-  margin: 70px auto 0px auto;
-  background-color: #ffffff;
-  border-radius: 30px;
-  box-shadow: 3px 3px 10px rgb(188, 188, 188);
-  padding: 0px 20px 20px 20px;
-}
-.report-header {
-  height: 80px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 20px 10px 20px;
-  border-bottom: 2px solid rgba(0, 20, 151, 0.59);
-}
- 
-.recent-Articles {
-  font-size: 30px;
-  font-weight: 600;
-  color: #5500cb;
-}
- 
-.view {
-  height: 35px;
-  width: 90px;
-  border-radius: 8px;
-  background-color: #5500cb;
-  color: white;
-  font-size: 15px;
-  border: none;
-  cursor: pointer;
-}
- 
-.report-body {
-  max-width: 1160px;
-  overflow-x: auto;
-  padding: 20px;
-}
-.report-topic-heading,
-.item1 {
-  width: 1120px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.t-op {
-  font-size: 18px;
-  letter-spacing: 0px;
-}
- 
-.items {
-  width: 1120px;
-  margin-top: 15px;
-}
- 
-.item1 {
-  margin-top: 20px;
-}
-.t-op-nextlvl {
-  font-size: 14px;
-  letter-spacing: 0px;
-  font-weight: 600;
-}
- 
-.label-tag {
-  width: 100px;
-  text-align: center;
-  background-color: rgb(0, 177, 0);
-  color: white;
-  border-radius: 4px;
-}
 
 @media screen and (max-width: 950px) {
+    .box, .banner-img, .chart-img, .table-img {
+      display: none;
+    }
+    .nav {
+      width: 146px;
+    }
     .nav-img {
-      height: 25px;
+      height: 15px;
+      width: 15px;
+      margin-left: 25px;
     }
     .nav-option {
-      gap: 30px;
+      gap: 12px;
     }
     .nav-option h3 {
       font-size: 15px;
     }
-    .report-topic-heading,
-    .item1,
-    .items {
-      width: 800px;
-    }
   }
    
   @media screen and (max-width: 850px) {
-    /* .box-container {
-      display: none;
-    } */
+    .box {
+      display: flex;
+      height: 130px;
+      width: 230px;
+    }
+    .banner-img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 45%;
+    }
+    .chart-img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+      width: 302px;
+    }
+    .table-img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 302px;
+    }
     .frame-img {
       display: none;
     }
@@ -347,11 +263,6 @@ header {
     }
     .nav-option h3 {
       font-size: 20px;
-    }
-    .report-topic-heading,
-    .item1,
-    .items {
-      width: 700px;
     }
     .navcontainer {
       width: 100vw;
@@ -382,13 +293,11 @@ header {
       display: flex;
       align-items: center;
       margin: -40px 0 40px 0;
-      /* justify-content: center; */
     }
     .searchbar2 {
       flex-direction: row;
       padding: 0px 16px;
       gap: 8px;
-      /* width: 250px; */
       height: 42px;
       background: #FFFFFF;
       border: 1px solid #EAECF0;
@@ -396,12 +305,16 @@ header {
       padding: 0 20px;
       font-size: 15px;
     }
+    .searchbar2 .search-word {
+      color: #9D9FA1;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
   }
+}
    
   @media screen and (max-width: 490px) {
-    /* .message {
-      display: none;
-    } */
     .dp {
       display: flex;
     }
@@ -432,69 +345,5 @@ header {
     }
     .nav-upper-options {
       gap: 15px;
-    }
-    .recent-Articles {
-      font-size: 20px;
-    }
-    .report-topic-heading,
-    .item1,
-    .items {
-      width: 550px;
-    }
-  }
-   
-  @media screen and (max-width: 400px) {
-    .recent-Articles {
-      font-size: 17px;
-    }
-    .view {
-      width: 60px;
-      font-size: 10px;
-      height: 27px;
-    }
-    .report-header {
-      height: 60px;
-      padding: 10px 10px 5px 10px;
-    }
-    .searchbtn img {
-      height: 20px;
-    }
-  }
-   
-  @media screen and (max-width: 320px) {
-    .recent-Articles {
-      font-size: 12px;
-    }
-    .view {
-      width: 50px;
-      font-size: 8px;
-      height: 27px;
-    }
-    .report-header {
-      height: 60px;
-      padding: 10px 5px 5px 5px;
-    }
-    .t-op {
-      font-size: 12px;
-    }
-    .t-op-nextlvl {
-      font-size: 10px;
-    }
-    .report-topic-heading,
-    .item1,
-    .items {
-      width: 300px;
-    }
-    .report-body {
-      padding: 10px;
-    }
-    .label-tag {
-      width: 70px;
-    }
-    .searchbtn {
-      width: 40px;
-    }
-    .searchbar2 input {
-      width: 180px;
     }
   }
