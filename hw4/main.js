@@ -32,8 +32,6 @@ const getOddValues = numbers => {
     }
     return odd_array;
 };
-// const result = getOddValues([])
-// console.log(result)
 /**
   * Exercise 2
   *
@@ -131,14 +129,6 @@ const mergeObjects = objects => {
 const getSmallestValue2 = numbers => {
   return Math.min(...numbers)
 };
-
-// const input1 = [];
-// const output1 = getSmallestValue(input1);
-// console.log(output1); 
-
-// const input5 = ['foo', 'bar', 'baz'];
-// const output5 = getSmallestValue(input5);
-// console.log(output5); 
 
 /**
   * Exercise 8
@@ -367,10 +357,10 @@ const getCapitalizedStrings = string => {
   // for (let i = 0; i < string.length; i++){
   //   if (i % 2 === 0){
   //     even_upper += string[i].toUpperCase();
-  //     // odd_upper += string[i].toLowerCase();
+  //     // odd_upper += string[i];
   //     odd_upper += string[i];
   //   }else{
-  //     // even_upper += string[i].toLowerCase();
+  //     // even_upper += string[i];
   //     odd_upper += string[i].toUpperCase();
   //     even_upper += string[i];
   //   }
@@ -381,17 +371,6 @@ const getCapitalizedStrings = string => {
     string.split('').map((c, i) => i % 2 === 1 ? c.toUpperCase() : c).join('')
   ];
 };
-
-// console.log(getCapitalizedStrings('')); // should return ['', '']
-// console.log(getCapitalizedStrings('abcdef')); // should return ['', '']
-// console.log(getCapitalizedStrings('a')); // should return ['A', 'a']
-// console.log(getCapitalizedStrings('ab')); // should return ['Ab', 'aB']
-// console.log(getCapitalizedStrings('abc')); // should return ['AbC', 'aBc']
-// console.log(getCapitalizedStrings('ABCD')); // should return ['AbCd', 'aBcD']
-// console.log(getCapitalizedStrings('1234')); // should return ['1234', '1234']
-// console.log(getCapitalizedStrings('!@#')); // should return ['!@#', '!@#']
-// console.log(getCapitalizedStrings('a b c')); // should return ['A b C', 'a B c']
-// console.log(getCapitalizedStrings('a  b   c')); // should return ['A  b   C', 'a  B   c']
 
 
 /**
