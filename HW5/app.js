@@ -1,24 +1,69 @@
 showtask();
 showTaskComleted();
-const input = document.querySelector('input');
-const btn = document.querySelector('.addTask2');
 
-btn.addEventListener('click', function(){
-  addtaskinputval = input.value;
-  if (addtaskinputval.trim() != 0){
+const popupToggle = document.getElementById('myBtn');
+  
+function createModal(){
+  const modalHtml = 
+  '<div id="mypopup" class="popup">' +
+    '<div class="popup-content">' +
+      '<div class="popup-header">' +
+        '<h2>Add New Task</h2>' +
+      '</div>' +
+      '<div class="popup-body">' +
+        '<input id="task-title" type="text" placeholder="Task title" onkeyup="changeTheColorOfButton()">' +
+      '</div>' +
+      '<div class="popup-footer">' +
+        '<button class="close" onclick="closeItem()">Close</button>' +
+        '<button class="addTask2" id="task-button" onclick="addItem()">Add Task</button>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+
+  const existingPopup = document.getElementById('mypopup');
+  if (existingPopup) {
+    existingPopup.remove();
+  }
+  document.body.insertAdjacentHTML('beforebegin', modalHtml);
+}
+
+
+popupToggle.addEventListener("click", function(){
+  createModal();
+});
+
+function addItem(){
+  const taskTitleInput = document.querySelector('input');
+  addTaskInputVal = taskTitleInput.value;
+  if (addTaskInputVal.trim() !== 0){
     let webtask = localStorage.getItem("localtask");
-    if(webtask == null){
+    if(webtask === null){
     taskObj = [];
     }
     else {
     taskObj = JSON.parse(webtask);
     }
-    taskObj.push(addtaskinputval);
+    taskObj.push(addTaskInputVal);
     localStorage.setItem("localtask", JSON.stringify(taskObj));
-    input.value = '';
-  }
+    console.log(taskObj)
+    taskTitleInput.value = '';
+    }
+  closeItem();
   showtask();
-});
+}
+
+function closeItem(){
+  const popup = document.getElementById('mypopup');
+  popup.style.display="none";
+}
+
+function changeTheColorOfButton() {
+  if (document.getElementById("task-title").value !== "") {
+     document.getElementById("task-button").style.background = "#3C86F4";
+  } else {
+    document.getElementById("task-button").style.background = "#D3D3D3";
+ }
+}
 
 function showtask(){
   let webtask = localStorage.getItem("localtask");
@@ -39,9 +84,10 @@ function showtask(){
   });
   addTaskList.innerHTML = html;
 }
+
 function showTaskComleted(){
   let taskCompleted = localStorage.getItem("completedtask");
-  if(taskCompleted == null){
+  if(taskCompleted === null){
     taskCmpl = [];
   }
   else {
@@ -66,12 +112,13 @@ function deleteItem(index){
   localStorage.setItem("localtask", JSON.stringify(taskObj));
   showtask();
 }
+
 function checkItem(index){
   let webtask = localStorage.getItem("localtask");
   taskObj = JSON.parse(webtask);
 
   let taskCompleted = localStorage.getItem("completedtask");
-  if(taskCompleted == null){
+  if(taskCompleted === null){
     taskCmpl = [];
   }
   else {
@@ -84,15 +131,15 @@ function checkItem(index){
   showTaskComleted();
 }
 
-let searchtextbox = document.getElementById("find");
-searchtextbox.addEventListener("input", function(){
+let searchTextBox = document.getElementById("find");
+
+searchTextBox.addEventListener("input", function(){
   let trlist = document.querySelectorAll("li");
   Array.from(trlist).forEach(function(item){
-    let searchedtext = item.innerText;
-    console.log(searchedtext);
-    let searchtextboxval = searchtextbox.value;
-    let re = new RegExp(searchtextboxval, 'gi');
-    if (searchedtext.match(re)){
+    let searchedText = item.innerText;
+    let searchTextBoxVal = searchTextBox.value;
+    let re = new RegExp(searchTextBoxVal, 'gi');
+    if (searchedText.match(re)){
       item.style.display="block";
     }
     else {
@@ -101,23 +148,3 @@ searchtextbox.addEventListener("input", function(){
   })
 });
 
-let popup = document.getElementById('mypopup');
-let popupToggle = document.getElementById('myBtn');
-let popupClose = document.querySelector('.close');
-
-popupToggle.onclick = function(){
-  popup.style.display="block";
-};
-popupClose.onclick = function (){
-  popup.style.display="none";
-}
-btn.onclick = function (){
-  popup.style.display="none";
-}
-function changeTheColorOfButton() {
-  if (document.getElementById("task-title").value !== "") {
-     document.getElementById("task-button").style.background = "#3C86F4";
-  } else {
-    document.getElementById("task-button").style.background = "#D3D3D3";
- }
-}
