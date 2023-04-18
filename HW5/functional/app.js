@@ -110,6 +110,7 @@ async function addItem(){
 
     const todo = await res.json();
     todoToHTML(todo);
+    document.getElementById('find').value = '';
   }
 }
 
