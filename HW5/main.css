@@ -293,22 +293,6 @@ input[type="checkbox"]{
   }
   
   .closeModal {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 16px 32px;
-    gap: 10px;
-
-    width: 465px;
-    height: 52px;
-
-    background: #3C86F4;
-    border-radius: 12px;
-    flex: none;
-    order: 0;
-    flex-grow: 1; */
-
     background: #3C86F4;
     border-color: transparent;
     font-style: normal;
@@ -361,9 +345,6 @@ input[type="checkbox"]{
     padding-left: 56px;
 }
 .modal-footer {
-    /* color: white;
-    padding-right: 27px;
-    padding-left: 32px; */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -393,9 +374,9 @@ input[type="checkbox"]{
     animation-name: animatetop;
     animation-duration: 0.4s;
 }
-@media (min-height: 350px) and (max-height: 500px) {
+/* @media (min-height: 350px) and (max-height: 500px) {
     .modal-content {
       font-size: 20px;
     }
-  }
+  } */
   

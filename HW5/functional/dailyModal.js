@@ -37,14 +37,14 @@ async function checkDate() {
     }else{
         modal.style.display = 'none';
     }
-    // const modalShowTime = localStorage.getItem("modalShowTime");
-    // if (modalShowTime) {
-    //     const lastModalShowDate = new Date(Number(modalShowTime)).toISOString().slice(0, 10);
-    //     if (lastModalShowDate === currentDate) {
-    //         modal.style.display = 'none';
-    //         // console.log("was shown");
-    //     }
-    // }
+    const modalShowTime = localStorage.getItem("modalShowTime");
+    if (modalShowTime) {
+        const lastModalShowDate = new Date(Number(modalShowTime)).toISOString().slice(0, 10);
+        if (lastModalShowDate === currentDate) {
+            modal.style.display = 'none';
+            // console.log("was shown");
+        }
+    }
 }
   
 

@@ -1,10 +1,3 @@
-// fetch("http://localhost:3000/tasks")
-//     .then(res =>res.json())
-//     .then(json =>{
-//         json.map(data =>{
-//             console.log(data.title)
-//         })
-//     });
 if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(showPosition);
   } 
