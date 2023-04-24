@@ -27,6 +27,29 @@ body{
     font-size: 32px;
     font-weight: 700;
 }
+.header-elements {
+    display: inline-flex;
+}
+.temp {
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 23.15px;
+    margin-top: 9.75px;
+    width: 63.95px;
+    height: 19.5px;
+}
+.weather-icon {
+    width: 57px;
+    height: 44px;
+    margin-left: 471px;
+}
+.city-name {
+    font-weight: 500;
+    font-size: 18px;
+    color: #838383;
+    margin-left: 83.75px;
+    margin-top: 9.75px;
+}
 .search-wrapper{
     display: flex;
     height: 52px;
@@ -93,7 +116,6 @@ input[type="checkbox"]{
 }
 
 .popup {
-    /* display: none; */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -140,7 +162,7 @@ input[type="checkbox"]{
     margin-top: 24px;
 }
 .popup-body {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     padding: 16px 21px;
     padding-right: 27px;
@@ -148,7 +170,79 @@ input[type="checkbox"]{
     margin-bottom: 150px;
     margin-top: 38px;
 }
-.popup-body input {
+.container-date-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+  }
+  .option{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .health,
+  .work,
+  .home,
+  .other {
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    border-radius: 6px;
+    margin-right: 12px;
+    padding: 2px 8px;
+    text-align: center;
+    width: 52px;
+    height: 19px;
+    cursor: pointer;
+  }
+  .health {
+    background-color: rgba(60, 134, 244, 0.31);
+    color: #0053CF;
+  }
+  .work {
+    background-color: #E8D7FF;
+    color: #9747FF;
+  }
+  .home {
+    background-color: #E2F7E2;
+    color: #639462;
+  }
+  .other {
+    background-color: #FFECC7;
+    color: #EA8C00;
+  }
+  .calendar {
+    width: 117px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    background: #ffffff;
+    border: 2px solid rgba(60, 134, 244, 0.6);
+    border-radius: 12px;
+    padding: 10px 16px;
+  }
+/* .popup-body .date{
+    height: 40px;
+    width: 117px;
+    margin-top: 18px;
+    margin-left: 348px;
+} */
+/* .popup-body .calendar{
+    font-size: 15px;
+    font-weight: 500;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(60, 134, 244, 0.6);
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 10px 16px;
+} */
+
+.popup-body .title-task {
     width: 100%;
     height: 100%;
     border: 1px solid #D2D2D2;
@@ -184,3 +278,105 @@ input[type="checkbox"]{
         opacity: 1;
     }
 }
+/* The Modal (background) */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.4);
+  }
+  
+  .closeModal {
+    background: #3C86F4;
+    border-color: transparent;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+.modal-header {
+    background-color: #fff;
+    color: #000000;
+    display: flex;
+    padding: 2px 16px;
+    margin-top: 24px;
+}
+.modal-header h2{
+    margin: auto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+}
+.modal-body {
+    /* display: flex; */
+    justify-content: center;
+    padding: 16px 21px;
+    padding-right: 27px;
+    padding-left: 32px;
+    margin-bottom: 97px;
+    margin-top: 15px;
+}
+.modal-body h3{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    padding-left: 32px;
+    margin-bottom: 9px;
+}
+.modal-body ul{
+    height: 130px;
+    overflow: auto;
+}
+.modal-body li{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    list-style: none;
+    padding-left: 56px;
+}
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 16px 32px;
+    gap: 10px;
+
+    width: 465px;
+    height: 52px;
+
+    background: #3C86F4;
+    border-radius: 12px;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+.modal-content{
+    position: relative;
+    min-height: 350px;
+    max-height: 500px;
+    background-color: #fefefe;
+    margin: 100px auto 20px;
+    padding: 24px 30px 22px;
+    border-radius: 24px;
+    width: 39.4%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+/* @media (min-height: 350px) and (max-height: 500px) {
+    .modal-content {
+      font-size: 20px;
+    }
+  } */
+  

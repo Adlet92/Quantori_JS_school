@@ -9,33 +9,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- <div id="mypopup" class="popup">
-    <div class="popup-content">
-      <div class="popup-header">
-        <h2>Add New Task</h2>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Good Morning</h2>
       </div>
-      <div class="popup-body">
-        <input id="task-title" type="text" placeholder="Task title" onkeyup="changeTheColorOfButton()">
+      <div class="modal-body">
+        <h3>You have the next planned tasks for today:</h3>
+        <ul id="daily-tasks">
+        </ul>
       </div>
-      <div class="popup-footer">
-        <button class="close">Close</button>
-        <button class="addTask2" id="task-button">Add Task</button>
+      <div class="modal-footer" onclick="closeModal()">
+        <button class="closeModal">Ok</button>
       </div>
     </div>
-  </div> -->
+  </div>;
+
   <div class="container">
     <div class="todo-app">
-      <h2>To Do List</h2>
+      <div class="header-elements">
+        <h2>To Do List</h2>
+        <img src="" id="weather-icon" class="weather-icon">
+        <h4 id="temp" class="temp"></h4>
+        <h4 id="city-name" class="city-name"></h4>
+      </div>
       <div class="search-wrapper">
         <input type="search" id="find" placeholder="Search task"> 
         <button id="myBtn">+New Task</button>
       </div>
       <ol class="notCompleted" id="ntc">
+        <h3>All Tasks</h3>
       </ol>
       <ol class="Completed" id="cmplt">
+        <h3>Completed Tasks</h3>
       </ol>
     </div>
   </div>
-  <script src="app.js"></script>
+  <script src="functional/app.js"></script>
+  <script src="functional/weather.js"></script>
+  <script src="functional/dailyModal.js"></script>
 </body>
 </html>
