@@ -1,9 +1,9 @@
 
-const popupToggle = document.getElementById('myBtn');
+const newTaskButton = document.getElementById('myBtn');
   
-function createModal(){
+function createAddTaskWindow(){
   const modalHtml = 
-  '<div id="mypopup" class="popup">' +
+  '<div id="add-task-window" class="popup">' +
     '<div class="popup-content">' +
       '<div class="popup-header">' +
         '<h2>Add New Task</h2>' +
@@ -21,15 +21,15 @@ function createModal(){
           '</div>' +
       '</div>' +
       '<div class="popup-footer">' +
-        '<button class="close" onclick="closeItem()">Close</button>' +
-        '<button class="addTask2" id="task-button" onclick="addItem()">Add Task</button>' +
+        '<button class="close" onclick="closeAddTaskWindow()">Close</button>' +
+        '<button class="addTask2" id="task-button" onclick="addItem();">Add Task</button>' +
       '</div>' +
     '</div>' +
   '</div>';
 
-  const existingPopup = document.getElementById('mypopup');
-  if (existingPopup) {
-    existingPopup.remove();
+  const existingAddTaskWindow = document.getElementById('add-task-window');
+  if (existingAddTaskWindow) {
+    existingAddTaskWindow.remove();
   }
   document.body.insertAdjacentHTML('beforebegin', modalHtml);
 
@@ -39,16 +39,16 @@ function createModal(){
 }
 
 
-popupToggle.addEventListener("click", function(){
-  createModal();
+newTaskButton.addEventListener("click", function(){
+  createAddTaskWindow();
 });
 
-function closeItem(){
-  const popup = document.getElementById('mypopup');
+function closeAddTaskWindow(){
+  const popup = document.getElementById('add-task-window');
   popup.style.display="none";
 }
-function closeModal(){
-  const modal = document.getElementById('myModal');
+function closeTodaysModal(){
+  const modal = document.getElementById('todaysTask');
   modal.style.display="none";
 }
 
@@ -77,82 +77,129 @@ searchTextBox.addEventListener("input", function(){
   })
 });
 
-async function getAllTodos(){
-  const res = await fetch("http://localhost:3000/tasks");
-  const todos = await res.json();
-  for (let i = 0; i < todos.length; i++){
-    if(todos[i]["completed"] === true){
-      CompletedToHTML(todos[i])
-    }else{
-      todoToHTML(todos[i])
+  const state = {
+    todos: [],
+    completed: [],
+    searchQuery: ''
+  };
+
+  function renderTasks() {
+    const todoList = document.getElementById('ntc');
+    const completedList = document.getElementById('cmplt');
+    const searchTextBox = document.getElementById('find');
+  
+    todoList.innerHTML = '';
+    completedList.innerHTML = '';
+  
+    state.todos.forEach(({ id, title, completed, dateValue }) => {
+      if (title.includes(state.searchQuery)) {
+        const html = `
+        <li>
+            <input id="check-${id}" type="checkbox" ${completed ? 'checked' : ''} onchange="toggleCompletedTodo(${id}, '${title}', ${!completed}, '${dateValue}')">
+            <label id="label-title-${id}" class="${completed ? 'completed' : ''}">${title}</label>
+            <button class="deleteIcon" onclick="deleteTodo(${id})">
+              <img src="./img/Shape.svg">
+            </button>
+          </li>
+        `;
+        todoList.insertAdjacentHTML('beforeend', html);
+      }
+    });
+  
+    state.completed.forEach(({ title }) => {
+      if (title.includes(state.searchQuery)) {
+        const html = `
+          <li>
+            <input type="checkbox" checked disabled>
+            <label class="compl">${title}</label>
+          </li>
+        `;
+        completedList.insertAdjacentHTML('beforeend', html);
+      }
+    });
+  
+    searchTextBox.value = state.searchQuery;
+  }
+  
+  async function getAllTodos() {
+    const res = await fetch('http://localhost:3000/tasks', {
+    method: 'GET'
+    });
+    const todos = await res.json();
+    todos.forEach((todo) => {
+      if (todo.completed) {
+        state.completed.push(todo);
+      } else {
+        state.todos.push(todo);
+      }
+    });
+    renderTasks();
+  }
+  
+  window.addEventListener('DOMContentLoaded', getAllTodos);
+  
+  async function addItem() {
+    const input = document.getElementById('task-title');
+    const title = input.value;
+    const dateElement = document.getElementById('date-choose');
+    const dateValue = dateElement.value;
+  
+    if (title && dateValue) {
+      const todo = {
+        title,
+        dateValue,
+        completed: false
+      };
+
+      const res = await fetch('http://localhost:3000/tasks', {
+        method: 'POST',
+        // body: JSON.stringify(todo),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(todo)
+      });
+      
+      const createdTodo = await res.json();
+      state.todos.push(createdTodo);
+      // state.todos.push(todo);
+  
+      input.value = '';
+      // dateElement.value = '';
+      closeAddTaskWindow();
+      renderTasks();
     }
   }
-}
-
-window.addEventListener('DOMContentLoaded', getAllTodos);
-
-function todoToHTML({id, completed, title, dateValue}){
-  const todoList = document.getElementById('ntc');
-
-  todoList.insertAdjacentHTML('beforeend', 
-  ` <li><input id="check" onclick="toggleCompletedTodo(${id}, '${title}', ${!completed}, '${dateValue}')" type="checkbox" ${completed && 'checked'}>
-    <label id="label-title">${title}</label>
-    <button class="deleteIcon" onclick="deleteTodo(${id})"><img src = "./img/Shape.svg"/></button>
-    </li>
-  `);
-}
-function CompletedToHTML({title}){
-  const todoList = document.getElementById('cmplt');
-
-  todoList.insertAdjacentHTML('beforeend', `
-                  <li><input type="checkbox" checked disabled="disabled">
-                  <label class="compl">${title}</label>
-                  </li>
-  `);
-}
-
-async function addItem(){
-  const input = document.getElementById('task-title');
-  const title = input.value;
-  const dateElement  = document.getElementById('date-choose');
-  const dateValue  = dateElement.value;
-
-  if (title && dateValue) {
-    const res = await fetch("http://localhost:3000/tasks", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({title, completed: false, dateValue})
+  
+  async function deleteTodo(id) {
+    await fetch(`http://localhost:3000/tasks/${id}`, {
+    method: 'DELETE'
     });
 
-    const todo = await res.json();
-    todoToHTML(todo);
-    document.getElementById('find').value = '';
+    state.todos = state.todos.filter((todo) => todo.id !== id);
+    state.completed = state.completed.filter((todo) => todo.id !== id);
+    renderTasks();
   }
-}
+  
+  async function toggleCompletedTodo(id, title, completed, dateValue) {
+    const todo = { id, title, completed, dateValue };
 
-async function deleteTodo(id){
-  const res = await fetch(`http://localhost:3000/tasks/${id}`, {
-    method: 'DELETE',
-    headers:{
-      'Content-Type': 'application/json',
+    await fetch(`http://localhost:3000/tasks/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(todo),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    state.todos = state.todos.filter((t) => t.id !== id);
+    state.completed = state.completed.filter((t) => t.id !== id);
+  
+    if (completed) {
+      state.completed.push(todo);
+    } else {
+      state.todos.push(todo);
     }
-  });
-  const data = await res.json();
-  if (data){
-    document.getElementById('ntc').remove();
+  
+    renderTasks();
   }
-}
-async function toggleCompletedTodo(id, title, completed, dateValue){
-
-  const res = await fetch(`http://localhost:3000/tasks/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({title, completed, dateValue})
-  })
-  const data = await res.json();
-  // return data;
-}
