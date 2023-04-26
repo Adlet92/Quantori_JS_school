@@ -1,92 +1,143 @@
 
   export function createAddTaskWindow(){
+    const modal = document.createElement('div');
+    modal.id = 'add-task-window';
+    modal.classList.add('popup');
 
-    function changeTheColorOfButton() {
-        if (document.getElementById("task-title").value !== "") {
-           document.getElementById("task-button").style.background = "#3C86F4";
-        } else {
-          document.getElementById("task-button").style.background = "#D3D3D3";
-       }
-      }
-    function closeAddTaskWindow(){
-        const popup = document.getElementById('add-task-window');
-        popup.style.display="none";
-    }
-    async function addItem() {
-        const input = document.getElementById('task-title');
-        const title = input.value;
-        const dateElement = document.getElementById('date-choose');
-        const dateValue = dateElement.value;
-      
-        if (title && dateValue) {
-          const todo = {
-            title,
-            dateValue,
-            completed: false
-          };
-    
-          const res = await fetch('http://localhost:3000/tasks', {
-            method: 'POST',
-            // body: JSON.stringify(todo),
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(todo)
-          });
-          
-          const createdTodo = await res.json();
-          state.todos.push(createdTodo);
-          // state.todos.push(todo);
-      
-          input.value = '';
-          closeAddTaskWindow();
-          renderTasks();
-        }
-      }
+    const modalContent = document.createElement('div');
+    modalContent.classList.add('popup-content');
 
-    const modalHtml = 
-    '<div id="add-task-window" class="popup">' +
-      '<div class="popup-content">' +
-        '<div class="popup-header">' +
-          '<h2>Add New Task</h2>' +
-        '</div>' +
-        '<div class="popup-body">' +
-          '<input id="task-title" class="title-task" type="text" placeholder="Task title" onkeyup="changeTheColorOfButton()">' +
-          '<div class="container-date-options">' +
-                  '<div class="option">' +
-                      '<div class="option health">health</div>' +
-                      '<div class="option work">work</div>' +
-                      '<div class="option home">home</div>' +
-                      '<div class="option other">other</div>' +
-                  '</div>' +
-                  '<input id="date-choose" class="calendar" type="date">' +
-            '</div>' +
-        '</div>' +
-        '<div class="popup-footer">' +
-          '<button class="close" onclick="closeAddTaskWindow()">Close</button>' +
-          '<button class="addTask2" id="task-button" onclick="addItem();">Add Task</button>' +
-        '</div>' +
-      '</div>' +
-    '</div>';
+    const modalHeader = document.createElement('div');
+    modalHeader.classList.add('popup-header');
+
+    const headerTitle = document.createElement('h2');
+    headerTitle.textContent = 'Add New Task';
+
+    modalHeader.appendChild(headerTitle);
+
+    const modalBody = document.createElement('div');
+    modalBody.classList.add('popup-body');
+
+    const taskTitleInput = document.createElement('input');
+    taskTitleInput.id = 'task-title';
+    taskTitleInput.classList.add('title-task');
+    taskTitleInput.type = 'text';
+    taskTitleInput.placeholder = 'Task title';
+    taskTitleInput.addEventListener('keyup', changeTheColorOfButton);
+
+    const containerDateOptions = document.createElement('div');
+    containerDateOptions.classList.add('container-date-options');
+
+    const option = document.createElement('div');
+    option.classList.add('option');
+
+    const healthOption = document.createElement('div');
+    healthOption.classList.add('option', 'health');
+    healthOption.textContent = 'health';
+
+    const workOption = document.createElement('div');
+    workOption.classList.add('option', 'work');
+    workOption.textContent = 'work';
+
+    const homeOption = document.createElement('div');
+    homeOption.classList.add('option', 'home');
+    homeOption.textContent = 'home';
+
+    const otherOption = document.createElement('div');
+    otherOption.classList.add('option', 'other');
+    otherOption.textContent = 'other';
+
+    option.appendChild(healthOption);
+    option.appendChild(workOption);
+    option.appendChild(homeOption);
+    option.appendChild(otherOption);
+
+    const dateChooseInput = document.createElement('input');
+    dateChooseInput.id = 'date-choose';
+    dateChooseInput.classList.add('calendar');
+    dateChooseInput.type = 'date';
+    const today = new Date().toISOString().split('T')[0];
+    dateChooseInput.setAttribute('min', today);
+
+    containerDateOptions.appendChild(option);
+    containerDateOptions.appendChild(dateChooseInput);
+
+    modalBody.appendChild(taskTitleInput);
+    modalBody.appendChild(containerDateOptions);
+
+    const modalFooter = document.createElement('div');
+    modalFooter.classList.add('popup-footer');
+
+    const closeButton = document.createElement('button');
+    closeButton.classList.add('close');
+    closeButton.textContent = 'Close';
+    closeButton.addEventListener('click', closeAddTaskWindow);
+
+    const addButton = document.createElement('button');
+    addButton.classList.add('addTask2');
+    addButton.id = 'task-button';
+    addButton.textContent = 'Add Task';
+    addButton.addEventListener('click', addItem);
+
+    modalFooter.appendChild(closeButton);
+    modalFooter.appendChild(addButton);
+
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modalContent.appendChild(modalFooter);
+
+    modal.appendChild(modalContent);
   
     const existingAddTaskWindow = document.getElementById('add-task-window');
     if (existingAddTaskWindow) {
       existingAddTaskWindow.remove();
     }
-    document.body.insertAdjacentHTML('beforebegin', modalHtml);
+    // document.body.insertAdjacentHTML('beforebegin', modalHtml);
+    document.body.insertBefore(modal, document.body.firstChild);
 
-    const closeButton = document.querySelector('#add-task-window .close');
-    closeButton.addEventListener('click', closeAddTaskWindow);
-  
-    const addButton = document.getElementById('task-button');
-    addButton.addEventListener('click', addItem);
-  
-    const titleInput = document.getElementById('task-title');
-    titleInput.addEventListener('keyup', changeTheColorOfButton);
-  
-    const dateElement = document.getElementById('date-choose');
-    const today = new Date().toISOString().split('T')[0];
-    dateElement.setAttribute('min', today);
   }
 
+
+  function changeTheColorOfButton() {
+    if (document.getElementById("task-title").value !== "") {
+       document.getElementById("task-button").style.background = "#3C86F4";
+    } else {
+      document.getElementById("task-button").style.background = "#D3D3D3";
+   }
+  }
+  function closeAddTaskWindow(){
+      const popup = document.getElementById('add-task-window');
+      popup.style.display="none";
+  }
+  async function addItem() {
+      const input = document.getElementById('task-title');
+      const title = input.value;
+      const dateElement = document.getElementById('date-choose');
+      const dateValue = dateElement.value;
+    
+      if (title && dateValue) {
+        const todo = {
+          title,
+          dateValue,
+          completed: false
+        };
+
+        const res = await fetch('http://localhost:3000/tasks', {
+          method: 'POST',
+          // body: JSON.stringify(todo),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(todo)
+        });
+        
+        const createdTodo = await res.json();
+        state.todos.push(createdTodo);
+        // state.todos.push(todo);
+    
+        input.value = '';
+        closeAddTaskWindow();
+        renderTasks();
+      }
+    }
   

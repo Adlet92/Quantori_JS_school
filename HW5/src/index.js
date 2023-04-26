@@ -1,5 +1,5 @@
-import './main.css'
-import './img/Shape.svg'
+import './main.css';
+import ShapeImage from './img/Shape.svg';
 import { setupSearchBox } from './search';
 import {createAddTaskWindow} from './newTask';
 
@@ -53,43 +53,61 @@ newTaskButton.addEventListener("click", function(){
     todoList.innerHTML = '';
     completedList.innerHTML = '';
   
-    state.todos.forEach(({ id, title, completed}) => {
+    state.todos.forEach(({ id, title, completed, dateValue}) => {
       if (title.includes(state.searchQuery)) {
-        const html = `
-          <li>
-            <input id="check-${id}" type="checkbox" ${completed ? 'checked' : ''}>
-            <label id="label-title-${id}" class="${completed ? 'completed' : ''}">${title}</label>
-            <button id="delete-${id}" class="deleteIcon">
-              <img src="./img/Shape.svg">
-            </button>
-          </li>
-        `;
-        todoList.insertAdjacentHTML('beforeend', html);
 
-        const deleteButton = document.getElementById(`delete-${id}`);
-        deleteButton.addEventListener('click', () => {
+        const li = document.createElement('li');
+
+        const checkbox = document.createElement('input');
+        checkbox.setAttribute('id', `check-${id}`);
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.checked = completed;
+        checkbox.addEventListener('click', () => {
+          toggleCompletedTodo(id, title, !completed, dateValue);
+        });
+        li.appendChild(checkbox);
+
+        const label = document.createElement('label');
+        label.setAttribute('id', `label-title-${id}`);
+        label.classList.add(completed ? 'completed' : '');
+        label.textContent = title;
+        li.appendChild(label);
+
+        const button = document.createElement('button');
+        button.setAttribute('id', `delete-${id}`);
+        button.classList.add('deleteIcon');
+        button.addEventListener('click', () => {
           deleteTodo(id);
         });
+        const img = document.createElement('img');
+        img.setAttribute('src', ShapeImage);
+        button.appendChild(img);
+        li.appendChild(button);
+
+        todoList.appendChild(li);
+       
       }
     });
     state.completed.forEach(({ title }) => {
       if (title.includes(state.searchQuery)) {
-        const html = `
-          <li>
-            <input type="checkbox" checked disabled>
-            <label class="compl">${title}</label>
-          </li>
-        `;
-        completedList.insertAdjacentHTML('beforeend', html);
+        const li = document.createElement('li');
+
+        const checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.checked = true;
+        checkbox.disabled = true;
+        li.appendChild(checkbox);
+
+        const label = document.createElement('label');
+        label.classList.add('compl');
+        label.textContent = title;
+        li.appendChild(label);
+
+        completedList.appendChild(li);
       }
     });
-    // const toggleButton = document.getElementById(`check-${id}`);
-    // toggleButton.addEventListener('change', () => {
-    //   toggleCompletedTodo(id, title, completed, dateValue);
-    // });
   }
   
-
   async function getAllTodos() {
     const res = await fetch('http://localhost:3000/tasks', {
     method: 'GET'
