@@ -40,13 +40,19 @@ newTaskButton.addEventListener("click", function(){
     renderTasks();
   }
 
-  const state = {
+  export const state = {
     todos: [],
     completed: [],
     searchQuery: ''
   };
 
-  function renderTasks() {
+  // export function setSearchQuery(query) {
+  //   state.searchQuery = query;
+  //   renderTasks();
+  // }
+  
+ 
+  export function renderTasks() {
     const todoList = document.getElementById('ntc');
     const completedList = document.getElementById('cmplt');
     
@@ -69,7 +75,11 @@ newTaskButton.addEventListener("click", function(){
 
         const label = document.createElement('label');
         label.setAttribute('id', `label-title-${id}`);
-        label.classList.add(completed ? 'completed' : '');
+        // label.classList.add(completed ? 'completed' : '');
+        if (completed) {
+          label.classList.add('completed');
+        }
+        
         label.textContent = title;
         li.appendChild(label);
 

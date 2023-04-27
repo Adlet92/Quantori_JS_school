@@ -1,3 +1,5 @@
+// import { setSearchQuery } from './index';
+
 export function setupSearchBox() {
     const searchTextBox = document.getElementById("find");
   
@@ -13,7 +15,8 @@ export function setupSearchBox() {
         else {
           item.style.display="none";
         }
-      })
+      });
+      // setSearchQuery(searchTextBox.value);
     });
   }
   

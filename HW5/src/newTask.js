@@ -1,3 +1,5 @@
+import { state, renderTasks } from './index';
+// import { renderTasks } from './index';
 
   export function createAddTaskWindow(){
     const modal = document.createElement('div');
@@ -77,7 +79,14 @@
     addButton.classList.add('addTask2');
     addButton.id = 'task-button';
     addButton.textContent = 'Add Task';
-    addButton.addEventListener('click', addItem);
+    // addButton.addEventListener('click', addItem);
+    addButton.addEventListener('click', async function() {
+      if (await addItem()) {
+        document.getElementById('find').value = '';
+        closeAddTaskWindow();
+      }
+    });
+    
 
     modalFooter.appendChild(closeButton);
     modalFooter.appendChild(addButton);
@@ -103,7 +112,7 @@
        document.getElementById("task-button").style.background = "#3C86F4";
     } else {
       document.getElementById("task-button").style.background = "#D3D3D3";
-   }
+    }
   }
   function closeAddTaskWindow(){
       const popup = document.getElementById('add-task-window');
@@ -136,8 +145,10 @@
         // state.todos.push(todo);
     
         input.value = '';
-        closeAddTaskWindow();
         renderTasks();
+        // closeAddTaskWindow();
+        return true;
       }
+      return false;
     }
   

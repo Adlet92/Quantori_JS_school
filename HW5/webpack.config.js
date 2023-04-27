@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 exports.default = {
     mode: process.env.NODE_ENV || 'development',
@@ -8,7 +9,20 @@ exports.default = {
     },
     output: {
         clean: true,
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        compress: true,
+        port: 9000
+    },
+    watchOptions: {
+        ignored: /node_modules/,
+        aggregateTimeout: 300,
+        poll: 1000
     },
     module: {
         rules: [
@@ -22,7 +36,7 @@ exports.default = {
             },
             {
                 test: /\.json$/,
-                loader: 'json-loader',
+                // loader: 'json-loader',
                 type: 'javascript/auto'
             },
         ],
