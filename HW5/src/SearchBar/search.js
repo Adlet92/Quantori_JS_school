@@ -1,4 +1,5 @@
 // import { setSearchQuery } from './index';
+import './searchBar.css';
 
 export function setupSearchBox() {
     const searchTextBox = document.getElementById("find");

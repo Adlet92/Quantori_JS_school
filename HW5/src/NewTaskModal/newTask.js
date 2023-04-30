@@ -1,5 +1,5 @@
-import { state, renderTasks } from './index';
-// import { renderTasks } from './index';
+import { state, renderTasks } from '../index';
+import './newTask.css';
 
   export function createAddTaskWindow(){
     const modal = document.createElement('div');
@@ -101,7 +101,6 @@ import { state, renderTasks } from './index';
     if (existingAddTaskWindow) {
       existingAddTaskWindow.remove();
     }
-    // document.body.insertAdjacentHTML('beforebegin', modalHtml);
     document.body.insertBefore(modal, document.body.firstChild);
 
   }
@@ -133,7 +132,6 @@ import { state, renderTasks } from './index';
 
         const res = await fetch('http://localhost:3000/tasks', {
           method: 'POST',
-          // body: JSON.stringify(todo),
           headers: {
             'Content-Type': 'application/json'
           },
@@ -142,11 +140,9 @@ import { state, renderTasks } from './index';
         
         const createdTodo = await res.json();
         state.todos.push(createdTodo);
-        // state.todos.push(todo);
     
         input.value = '';
         renderTasks();
-        // closeAddTaskWindow();
         return true;
       }
       return false;

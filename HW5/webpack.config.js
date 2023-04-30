@@ -5,7 +5,7 @@ exports.default = {
     mode: process.env.NODE_ENV || 'development',
     entry: {
         main: './src/index.js',
-        weather: './src/weather.js'
+        weather: './src/Weather/weather.js'
     },
     output: {
         clean: true,

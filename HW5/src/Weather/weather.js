@@ -1,4 +1,5 @@
-// import './components/Weather/weather.css';
+
+import './weather.css';
 
 if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(showPosition);
