@@ -1,3 +1,6 @@
+
+import './weather.css';
+
 if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(showPosition);
   } 
