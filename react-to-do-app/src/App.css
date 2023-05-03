@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito';
+}
+body{
+    height: 100vh;
+}
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+}
+.todo-app {
+    width: 71.6%;
+    background: #fff;
+    margin: 44px 164px 278px 165px;
+    padding: 0px 0px 0px;
+    border-radius: 10px;
+}
+.todo-app h2 {
+    color: #1D1D1D;
+    display: flex;
+    align-items: center;
+    margin-bottom: 44px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32.74px;
+    color: #000000;
+    margin-bottom: 24px;
+}
+.Completed h3{
+    margin-top: 40px;
+}
+ol {
+    list-style: none;
+}
+ol li {
+    width: 50.7%;
+    padding: 8px 12px;
+    font-size: 18px;
+    font-weight: 400;
+}
+input[type="checkbox"]{
+    height: 21px;
+    width: 21px;
+    margin-right: 20px;
+    border-radius: 4px;
+}
+.Completed .compl{
+    color: #D3D3D3;
+}
+.deleteIcon {
+    float: right;
+    color: #000000;
+    cursor: pointer;
+    background-color: #fff;
+    border-color: transparent;
+}
