@@ -6,7 +6,7 @@ interface ProductProps {
 }
 
 
-export function Product(props: ProductProps){
+export function ProductInCompleted(props: ProductProps){
     // const todoToRender = props.product.filter((todo) => todo.completed === true);
     return (
         <li><input id="check"  type="checkbox"/>

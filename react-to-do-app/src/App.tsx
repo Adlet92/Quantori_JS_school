@@ -1,16 +1,19 @@
 import './App.css';
 import './SearchBar/searchBar.css';
-import {Product} from './TaskList/Product';
+import {ProductInCompleted} from './TaskList/ProductInCompleted';
+import { ProductCompleted } from './TaskList/ProductCompleted';
 import { useProducts } from './Hooks/products';
 import { Loader } from './components/Loader';
 import { ErrorMessage } from './components/Error';
 import { Modal } from './components/Modal/modal';
 import { AddTask } from './components/AddTask/AddTask';
+import {useState} from 'react';
 // import {products} from './database/products'
 
 
 function App() {
-const {loading, error, products} = useProducts()  
+const {loading, error, products} = useProducts() 
+// const {modal, setModal} = useState(true) 
 
   return (
     <div className="container">
@@ -29,13 +32,20 @@ const {loading, error, products} = useProducts()
       </div>
       <h3>All Tasks</h3>
       <ol className="notCompleted" id="ntc">
-        { products.map(product => <Product product={product} key={product.id}/>)}
+      {products
+        .filter(product => !product.completed)
+        .map(product => <ProductInCompleted product={product} key={product.id}/>)}
+
+        {/* { products.map(product => <Product product={product} key={product.id}/>)} */}
         {/* {data && data.length > 0 && data.map(val) => {
           <Product product={val} key={val.id}/>)
         }} */}
       </ol>
       <h3>Completed Tasks</h3>
       <ol className="Completed" id="cmplt">
+      {products
+        .filter(product => product.completed)
+        .map(product => <ProductCompleted product={product} key={product.id}/>)}
       </ol>
     </div>
     <Modal>

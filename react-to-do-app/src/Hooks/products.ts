@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios, {AxiosError} from 'axios';
-import { IProduct } from '../Models/models';
+import { IProduct, ITasks } from '../Models/models';
   
 export function useProducts(){
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -29,7 +29,7 @@ export function useProducts(){
     try{
       setError('')
       setLoading(true)
-      const response = await axios.get<IProduct>('db.json') 
+      const response = await axios.get<ITasks>('db.json') 
       setProducts(response.data.tasks)
       setLoading(false) 
     }catch(e: unknown){

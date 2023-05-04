@@ -1,11 +1,12 @@
 import React  from "react";
 import './modal.css'
+// import {addItem} from '../AddTask/AddTask'
 
 interface ModalProps {
     children: React.ReactNode
 }
 
-export function Modal({children}: ModalProps){
+export function Modal({ children }: ModalProps){
     return (
     <div id="mypopup" className="popup">
         <div className="popup-content">
@@ -25,10 +26,10 @@ export function Modal({children}: ModalProps){
                 <input id="date-choose" className="calendar" type="date"/>
             </div>
         </div> */}
-      <div className="popup-footer">
+      {/* <div className="popup-footer">
         <button className="close">Close</button>
         <button className="addTask2" id="task-button">Add Task</button>
-      </div>
+      </div> */}
     </div>
   </div>
     )

@@ -44,8 +44,7 @@
     margin: auto;
     margin-top: 24px;
 }
-.popup-body {
-    /* display: flex; */
+/* .popup-body {
     justify-content: center;
     padding: 16px 21px;
     padding-right: 27px;
@@ -118,7 +117,7 @@
     border-radius: 12px;
     padding: 16px 21px;
     gap: 10px;
-}
+} */
 .popup-footer {
     color: white;
     padding-right: 27px;
