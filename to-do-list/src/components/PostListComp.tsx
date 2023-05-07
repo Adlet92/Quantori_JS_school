@@ -1,5 +1,7 @@
 import React from 'react';
-import PostItemComp, {PostItemProps} from './PostItemComp';
+import PostItemComp from './PostItemComp';
+import {PostItemProps} from './models/models'
+import './UI/Inc.css'
 
 export interface PostListProps{
     titleList: string,
@@ -7,20 +9,21 @@ export interface PostListProps{
 }
 
 const PostListComp = ({posts, titleList} : PostListProps) =>{
-    if(!posts.length){
+    const completedPosts = posts.filter(post => post.completed);
+
+    if(!completedPosts.length){
         return
-        // return(
-        //     <h3></h3>
-        // )
     }
 
     return (
         <div>
+            <ol className="Completed" id="cmplt">
             <h1>
                 {titleList}
             </h1>
-            {posts.map((post) =>
+            {completedPosts.map((post) =>
             <PostItemComp {...post} key={post.id}/>)}
+            </ol>
         </div>
     )
 }

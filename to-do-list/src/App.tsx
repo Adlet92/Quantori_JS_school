@@ -1,48 +1,53 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import './styles/App.css'
-import { PostItemProps } from './components/PostItemComp';
+import { PostItemProps } from './components/models/models';
 import PostListComp from './components/PostListComp';
 import PostListInc from './components/PostListInc';
+import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import SearchBar from './components/SearchBar/SearchBar';
 import MyModal from './components/UI/modal/MyModal';
+import axios from 'axios';
+import PostService from './API/PostService';
+
 
 function App() {
-  const [posts, setPosts] = useState<PostItemProps[]>([
-      {id:1, title: 'Javascript', body: 'Desc'}
-  ])
-  const [posts2, setPosts2] = useState<PostItemProps[]>([
-    {id:2, title: 'Javascript', body: 'Desc'}
-])
-const [filter, setFilter] = useState({sort: '', query: ''})
-const [modal, setModal] = useState(false)
+  const [posts, setPosts] = useState<PostItemProps[]>([])
+  const [filter, setFilter] = useState({query: ''})
+  const [modal, setModal] = useState(false)
 
+  const sortedAndSearchedPosts = useMemo(()=>{
+    return posts.filter(post => post.title.toLowerCase().includes(filter.query))
 
-// const sortedPosts = useMemo(()=>{
-//   if (filter.sort){
-//     return [...posts].sort((a,b) => a[filter.sort].localeCompare(b[filter.sort]))
-//   }
-//   return posts;
+  }, [filter.query, posts])
 
-// }, [filter.sort, posts])
+  useEffect(() =>{
+    fetchPost()
+  }, [])
 
-const sortedAndSearchedPosts = useMemo(()=>{
-  return posts.filter(post => post.title.toLowerCase().includes(filter.query))
+  // const createPost = (newPost) => {
+  //   setPosts([...posts, newPost])
+  //   setModal(false)
+  // }
+  const createPost = async (newPost) => {
+    const createdPost = await PostService.create(newPost);
+    setPosts([...posts, createdPost])
+    setModal(false)
+  }
 
-}, [filter.query, posts])
+  async function fetchPost() {
+    const posts = await PostService.getAll();
+    setPosts(posts.tasks)
+  }
 
-const createPost = (newPost) => {
-  setPosts([...posts, newPost])
-  setModal(false)
-}
-
-// const removePost = (post) =>{
-//   setPosts(posts.filter(p => p.id !== post.id))
-// }
-const removePost = (post) =>{
-  setPosts(posts.filter(p => p.id !== post))
-}
-
+  // const removePost = (post) =>{
+  //   setPosts(posts.filter(p => p.id !== post))
+  // }
+  const removePost = async (id) => {
+    await PostService.delete(id);
+    setPosts(posts.filter(p => p.id !== id));
+  }
+  
   return (
     <div className="container">
       <MyModal visible={modal} setVisible={setModal}>
@@ -59,24 +64,16 @@ const removePost = (post) =>{
               filter={filter}
               setFilter={setFilter}
               setModal={() => setModal(true)}/>
-          {/* <div className="search-wrapper">
-            <MyInput
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)} 
-                type="search" 
-                id="find" 
-                placeholder="Search task"/> 
-            <button id="myBtn">+New Task</button>
-          </div> */}
-          {/* <h3>All Tasks</h3> */}
-          <ol className="notCompleted" id="ntc">
-          <PostListInc remove={removePost} posts={sortedAndSearchedPosts} titleList="All Tasks"/>
-          {/* <PostListInc remove={removePost} posts={posts} titleList="All Tasks"/> */}
-          </ol>
-          {/* <h3>Completed Tasks</h3> */}
-          <ol className="Completed" id="cmplt">
-          <PostListComp posts={posts2} posts={sortedAndSearchedPosts} titleList="Completed Tasks"/>
-          </ol>
+          {/* <ol className="notCompleted" id="ntc"> */}
+          {/* <PostListInc remove={removePost} posts={sortedAndSearchedPosts} titleList="All Tasks"/> */}
+          {/* <PostListInc remove={(id) => removePost(id)} posts={sortedAndSearchedPosts} titleList="All Tasks"/> */}
+          {/* </ol> */}
+          {/* <ol className="Completed" id="cmplt"> */}
+          {/* <PostListComp posts={sortedAndSearchedPosts} titleList="Completed Tasks"/> */}
+          {/* </ol> */}
+          <PostList remove={(id) => removePost(id)} posts={sortedAndSearchedPosts} titleList="All Tasks" isCompleted={false}/>
+          <PostList posts={sortedAndSearchedPosts} titleList="Completed Tasks" isCompleted={true}/>
+
       </div>
     </div>
     

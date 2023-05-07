@@ -1,5 +1,7 @@
 import React from 'react';
-import PostItemInc, {PostItemProps} from './PostItemInc';
+import PostItemInc from './PostItemInc';
+import  {PostItemProps} from './models/models'
+import './UI/Inc.css'
 
 export interface PostListProps{
     titleList: string,
@@ -8,8 +10,9 @@ export interface PostListProps{
 }
 
 const PostListInc = ({posts, titleList, remove} : PostListProps) =>{
+    const incompletedPosts = posts.filter(post => !post.completed);
 
-    if(!posts.length){
+    if(!incompletedPosts.length){
         return(
             <h3 style={{textAlign:'center'}}>There are no tasks</h3>
         )
@@ -17,11 +20,13 @@ const PostListInc = ({posts, titleList, remove} : PostListProps) =>{
 
     return (
         <div>
+            <ol className="notCompleted" id="ntc">
             <h1>
                 {titleList}
             </h1>
-            {posts.map((post) =>
+            {incompletedPosts.map((post) =>
             <PostItemInc remove={remove} {...post} key={post.id}/>)}
+            </ol>
         </div>
     )
 }

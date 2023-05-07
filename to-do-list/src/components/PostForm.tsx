@@ -2,18 +2,21 @@ import React, {useState} from 'react'
 import MyInput from './UI/input/MyInput'
 import MyButton from './UI/button/MyButton'
 import MyModal from './UI/modal/MyModal'
+import PostService from '../API/PostService'
 
 
 const PostForm = ({create, setVisible}) =>{
-    const [post, setPost] = useState({title:'', body:''})
+    const [post, setPost] = useState({title:'', dateValue:'', completed: false})
+    const [lastId, setLastId] = useState(0)
 
     const addNewPost = (e) => {
         e.preventDefault()
         const newPost = {
-            ...post, id: Date.now()
+            ...post, id: lastId + 1
         }
         create(newPost)
-        setPost({title:'', body:''})
+        setPost({title:'', dateValue:'', completed: false})
+        setLastId(lastId + 1)
       }
 
     return (
@@ -35,7 +38,12 @@ const PostForm = ({create, setVisible}) =>{
                             <div className="option home">home</div>
                             <div className="option other">other</div>
                         </div>
-                        <input id="date-choose" className="calendar" type="date"/>
+                        <input
+                            value={post.dateValue}
+                            onChange={e=> setPost({...post, dateValue:e.target.value})} 
+                            id="date-choose" 
+                            className="calendar" 
+                            type="date"/>
                     </div>
             </div>
             <div className="popup-footer">
