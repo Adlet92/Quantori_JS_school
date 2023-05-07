@@ -1,23 +1,28 @@
 import React, {useState} from 'react'
 import MyInput from './UI/input/MyInput'
-import MyButton from './UI/button/MyButton'
-import MyModal from './UI/modal/MyModal'
-import PostService from '../API/PostService'
+import { PostItemProps } from './models/models';
 
+interface PostFormProps {
+    create: (post: PostItemProps) => void;
+    setVisible: (visible: boolean) => void;
+  }
 
-const PostForm = ({create, setVisible}) =>{
-    const [post, setPost] = useState({title:'', dateValue:'', completed: false})
-    const [lastId, setLastId] = useState(0)
+const PostForm = ({create, setVisible} : PostFormProps) =>{
+    const [post, setPost] = useState<PostItemProps>({title:'', dateValue:'', completed: false})
+    const [sequence, setSequence] = useState(0)
 
-    const addNewPost = (e) => {
-        e.preventDefault()
+    const addNewPost = () => {
+        // e.preventDefault()
         const newPost = {
-            ...post, id: lastId + 1
+            ...post, id: sequence
         }
         create(newPost)
         setPost({title:'', dateValue:'', completed: false})
-        setLastId(lastId + 1)
+        setSequence(sequence => sequence + 1)
       }
+
+    const isDisabled = !post.title || !post.dateValue;
+    const buttonClass = `addTask2 ${post.title ? 'active' : ''}`;
 
     return (
         <div>
@@ -27,7 +32,7 @@ const PostForm = ({create, setVisible}) =>{
             <div className="popup-body">
                 <MyInput
                         value={post.title}
-                        onChange={e => setPost({...post, title:e.target.value})} 
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPost({...post, title:e.target.value})} 
                         type="text" 
                         placeholder=''
                 />
@@ -48,7 +53,7 @@ const PostForm = ({create, setVisible}) =>{
             </div>
             <div className="popup-footer">
                 <button className="close" onClick={() => setVisible(false)}>Close</button>
-                <button className="addTask2" id="task-button" onClick={addNewPost} >Add Task</button>
+                <button className={buttonClass} id="task-button" onClick={addNewPost} disabled={isDisabled}>Add Task</button>
             </div>
         </div>
     )

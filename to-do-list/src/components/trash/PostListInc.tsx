@@ -1,6 +1,6 @@
 import React from 'react';
-import PostItemInc from './PostItemInc';
-import  {PostItemProps} from './models/models'
+import PostItemInc from '../PostItemInc';
+import  {PostItemProps} from '../models/models'
 import './UI/Inc.css'
 
 export interface PostListProps{

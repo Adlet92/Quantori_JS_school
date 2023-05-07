@@ -1,8 +1,14 @@
 import React from "react";
 import './MyModal.css'
-import MyInput from "../input/MyInput";
 
-const MyModal = ({children, visible, setVisible}) =>{
+interface MyModalProps {
+    children: React.ReactNode,
+    visible: boolean,
+    setVisible: (value: boolean) => void,
+    // any additional props
+}
+
+const MyModal = ({children, visible, setVisible} : MyModalProps) =>{
 
     const rootClasses = ['popup']
     

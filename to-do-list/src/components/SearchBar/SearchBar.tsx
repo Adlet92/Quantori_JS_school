@@ -1,8 +1,15 @@
 import React from 'react'
-import classes from './MyInput.module.css'
 import './SearchBar.css'
 
-const SearchBar = ({filter, setFilter, setModal}) => {
+interface Props {
+    filter: {
+      query: string;
+    };
+    setFilter: (filter: { query: string }) => void;
+    setModal: () => void;
+  }
+
+const SearchBar = ({filter, setFilter, setModal} : Props) => {
     return (
         <div className="search-wrapper">
             <input

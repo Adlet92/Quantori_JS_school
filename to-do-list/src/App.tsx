@@ -1,13 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import './styles/App.css'
 import { PostItemProps } from './components/models/models';
-import PostListComp from './components/PostListComp';
-import PostListInc from './components/PostListInc';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import SearchBar from './components/SearchBar/SearchBar';
 import MyModal from './components/UI/modal/MyModal';
-import axios from 'axios';
 import PostService from './API/PostService';
 
 
@@ -21,29 +18,21 @@ function App() {
 
   }, [filter.query, posts])
 
-  useEffect(() =>{
+  useEffect(() => {
+    async function fetchPost() {
+      const posts = await PostService.getAll();
+      setPosts(posts.tasks)
+    }
     fetchPost()
   }, [])
 
-  // const createPost = (newPost) => {
-  //   setPosts([...posts, newPost])
-  //   setModal(false)
-  // }
-  const createPost = async (newPost) => {
+  const createPost = async (newPost: PostItemProps) => {
     const createdPost = await PostService.create(newPost);
     setPosts([...posts, createdPost])
     setModal(false)
   }
 
-  async function fetchPost() {
-    const posts = await PostService.getAll();
-    setPosts(posts.tasks)
-  }
-
-  // const removePost = (post) =>{
-  //   setPosts(posts.filter(p => p.id !== post))
-  // }
-  const removePost = async (id) => {
+  const removePost = async (id: number) => {
     await PostService.delete(id);
     setPosts(posts.filter(p => p.id !== id));
   }
@@ -64,19 +53,10 @@ function App() {
               filter={filter}
               setFilter={setFilter}
               setModal={() => setModal(true)}/>
-          {/* <ol className="notCompleted" id="ntc"> */}
-          {/* <PostListInc remove={removePost} posts={sortedAndSearchedPosts} titleList="All Tasks"/> */}
-          {/* <PostListInc remove={(id) => removePost(id)} posts={sortedAndSearchedPosts} titleList="All Tasks"/> */}
-          {/* </ol> */}
-          {/* <ol className="Completed" id="cmplt"> */}
-          {/* <PostListComp posts={sortedAndSearchedPosts} titleList="Completed Tasks"/> */}
-          {/* </ol> */}
           <PostList remove={(id) => removePost(id)} posts={sortedAndSearchedPosts} titleList="All Tasks" isCompleted={false}/>
           <PostList posts={sortedAndSearchedPosts} titleList="Completed Tasks" isCompleted={true}/>
-
       </div>
     </div>
-    
   );
 }
 
