@@ -37,4 +37,11 @@ export interface WeatherData {
         name:string
     }
   }
+
+export interface FormFooterProps {
+    setVisible: (visible: boolean) => void,
+    isDisabled: boolean,
+    addNewPost: (event: React.FormEvent<HTMLFormElement>) => void;
+    // addNewPost: () => void;
+  }
   

@@ -1,8 +1,8 @@
 import React from 'react';
 import PostItemInc from './PostItemInc';
 import PostItemComp from './PostItemComp';
-import './UI/Inc.css'
-import {PostListProps} from './Interfaces/interfaces'
+import '../UI/styles/Inc.css'
+import {PostListProps} from '../Interfaces/interfaces'
 
 const PostList = ({posts, titleList, remove, isCompleted}: PostListProps) => {
     const filteredPosts = posts.filter(post => post.completed === isCompleted);

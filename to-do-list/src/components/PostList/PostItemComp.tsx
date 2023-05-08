@@ -1,5 +1,5 @@
 import React from "react";
-import {PostItemProps} from './Interfaces/interfaces'
+import {PostItemProps} from '../Interfaces/interfaces'
 
 
 const PostItemComp = (props: PostItemProps) => {
