@@ -1,6 +1,6 @@
 import React from "react";
 import ShapeImage from '../styles/img/Shape.svg'
-import { PostItemProps } from './models/models'
+import { PostItemProps } from './Interfaces/interfaces'
 import PostService from "../API/PostService";
 
 

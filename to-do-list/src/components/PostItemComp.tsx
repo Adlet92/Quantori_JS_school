@@ -1,12 +1,6 @@
 import React from "react";
-import {PostItemProps} from './models/models'
+import {PostItemProps} from './Interfaces/interfaces'
 
-// export interface PostItemProps{
-//     id: number,
-//     title: string,
-//     completed: boolean,
-//     remove?: (id: number) => void
-// }
 
 const PostItemComp = (props: PostItemProps) => {
     return (

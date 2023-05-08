@@ -1,11 +1,7 @@
 import React, {useState} from 'react'
 import MyInput from './UI/input/MyInput'
-import { PostItemProps } from './models/models';
-
-interface PostFormProps {
-    create: (post: PostItemProps) => void;
-    setVisible: (visible: boolean) => void;
-  }
+import { PostItemProps } from './Interfaces/interfaces'
+import {PostFormProps} from './Interfaces/interfaces'
 
 const PostForm = ({create, setVisible} : PostFormProps) =>{
     const [post, setPost] = useState<PostItemProps>({title:'', dateValue:'', completed: false})

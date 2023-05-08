@@ -4,8 +4,7 @@ import './MyModal.css'
 interface MyModalProps {
     children: React.ReactNode,
     visible: boolean,
-    setVisible: (value: boolean) => void,
-    // any additional props
+    setVisible: (value: boolean) => void;
 }
 
 const MyModal = ({children, visible, setVisible} : MyModalProps) =>{

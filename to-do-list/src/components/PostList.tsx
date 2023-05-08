@@ -1,15 +1,8 @@
 import React from 'react';
 import PostItemInc from './PostItemInc';
 import PostItemComp from './PostItemComp';
-import { PostItemProps } from './models/models'
 import './UI/Inc.css'
-
-export interface PostListProps{
-    titleList: string,
-    posts: PostItemProps[];
-    remove?: (id: number) => void;
-    isCompleted: boolean;
-}
+import {PostListProps} from './Interfaces/interfaces'
 
 const PostList = ({posts, titleList, remove, isCompleted}: PostListProps) => {
     const filteredPosts = posts.filter(post => post.completed === isCompleted);
@@ -29,7 +22,7 @@ const PostList = ({posts, titleList, remove, isCompleted}: PostListProps) => {
     return (
         <div>
             <ol className={isCompleted ? "Completed" : "notCompleted"} id={isCompleted ? "cmplt" : "ntc"}>
-                <h1>{titleList}</h1>
+                <h3>{titleList}</h3>
                 {filteredPosts.map((post) => isCompleted ? 
                     <PostItemComp {...post} key={post.id}/> :
                     <PostItemInc remove={remove} {...post} key={post.id}/>

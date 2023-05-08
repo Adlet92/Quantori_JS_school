@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {PostItemProps} from '../components/models/models'
+import {PostItemProps} from '../components/Interfaces/interfaces'
 
 export default class PostService {
     static async getAll(){
