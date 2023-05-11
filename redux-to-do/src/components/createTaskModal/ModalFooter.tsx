@@ -6,15 +6,16 @@ interface ModalFooterProps {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;
   dateValue: string;
+  tag: string;
   type: string;
   handleSave?: (task: string) => void;
 }
 
 // const ModalFooter = ({setModalOpen, title, dateValue, type}: ModalFooterProps) => {
-  const ModalFooter = ({setModalOpen, title, dateValue, type, handleSave}: ModalFooterProps) => {
+  const ModalFooter = ({setModalOpen, title, dateValue, tag, type, handleSave}: ModalFooterProps) => {
     const [createPost, {}] = postAPI.useCreatePostMutation()
     const handleCreate = async () =>{
-        await createPost({title, completed: false, dateValue} as IPost);
+        await createPost({title, completed: false, dateValue, tag} as IPost);
         setModalOpen(false);
     }
     const handleUpdate = () => {

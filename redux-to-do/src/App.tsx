@@ -69,7 +69,7 @@ function App() {
         />
          <PostContainer
           titleList="Completed Tasks"
-          isCompleted={false}
+          isCompleted={true}
           key="all-tasks"
         />
     </div>

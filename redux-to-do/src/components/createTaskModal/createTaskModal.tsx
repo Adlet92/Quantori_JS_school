@@ -7,26 +7,32 @@ import { IPost } from '../../models/IPost';
 
 interface CreateTaskModalProps {
     task?: string;
+    dateValue?: string;
     modalOpen: boolean;
+    tag?: string;
     setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
     type: string;
-    handleTaskUpdate?: (task: string) => void;
+    handleTaskUpdate?: (task: string, dateValue: string, tag: string) => void;
   }
 
 // const CreateTaskModal = ({type, modalOpen, setModalOpen}: CreateTaskModalProps) => {
     const CreateTaskModal = ({type, modalOpen, setModalOpen, task, handleTaskUpdate}: CreateTaskModalProps) => {
     // const [post, setPost] = useState<IPost>({title:'', dateValue:'', completed: false})
-    const [post, setPost] = useState<IPost>({title: task ?? '', dateValue:'', completed: false})
+    const [post, setPost] = useState<IPost>({title: task ?? '', dateValue:'', completed: false, tag:''})
     const minDate = new Date().toISOString().split('T')[0];
     if (!modalOpen) {
         return null;
       }
+      const handleSelectTag = (tagName: string) => {
+        setPost({ ...post, tag: tagName });
+      };
+
       const handleSave = () => {
         if (post.title.trim() === '') {
           return;
         }
         if (handleTaskUpdate) {
-          handleTaskUpdate(post.title);
+          handleTaskUpdate(post.title, post.dateValue, post.tag);
         }
       };
       
@@ -44,7 +50,7 @@ interface CreateTaskModalProps {
                                 value={post.title}
                                 onChange={(e) => setPost({...post, title: e.target.value})}/>
                             <div className="container-date-options">
-                                <CategoryOptions/>
+                                <CategoryOptions onSelectTag={handleSelectTag}/>
                                 <input 
                                     id="date-choose" 
                                     className="calendar" 
@@ -59,6 +65,7 @@ interface CreateTaskModalProps {
                             setModalOpen={setModalOpen} 
                             title={post.title} 
                             dateValue={post.dateValue}
+                            tag = {post.tag}
                             handleSave={handleSave}/>
                     </div>
                 </div>
