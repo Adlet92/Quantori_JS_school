@@ -6,8 +6,9 @@ import { fetchUsers } from './store/reduces/ActionCreators';
 import PostContainer from './components/PostContainer';
 import SearchBar from './components/SearchBar/SearchBar';
 import Weather from './components/Weather/Weather';
-import CreateTaskModal from './components/createTaskModal/createTaskModal';
-import PostForm from './components/PostForm/PostForm';
+import CreateTaskModal from './components/CreateTaskModal/CreateTaskModal';
+// import CreateTaskModal from './components/createTaskModal/createTaskModal';
+// import PostForm from './components/PostForm/PostForm';
 
 function App() {
   // const dispatch = useAppDispatch();
@@ -18,11 +19,14 @@ function App() {
   // }, [])
 
   const [filter, setFilter] = useState({query: ''})
-  const [modal, setModal] = useState(false)
+  // const [modal, setModal] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
 
-  const closeModal = useCallback(() => {
-    setModal(false);
-  }, []);
+  // const closeModal = useCallback(() => {
+  //   setModal(false);
+  // }, []);
+
+
 
   return (
     // <div className="App">
@@ -33,21 +37,18 @@ function App() {
     // </div>
 
     <div className="container">
-    {/* <MyModal visible={modal} setVisible={closeModal}>
-        <PostForm create={createPost} setVisible={closeModal}/>
-    </MyModal> */}
-    <CreateTaskModal visible={modal} setVisible={closeModal}>
-      <PostForm create={createPost} setVisible={closeModal}/>
-      </CreateTaskModal>
+      <CreateTaskModal type='add' modalOpen={modalOpen} setModalOpen={setModalOpen}/>
     <div className="todo-app">
       <div className="header-elements">
         <h2>To Do List</h2>
         <Weather/>
         </div>
-        <SearchBar 
+        {/* <SearchBar 
             filter={filter}
             setFilter={setFilter}
-            setModal={() => setModal(true)}/>
+            setModal={() => setModal(true)}/> */}
+        <SearchBar 
+            setModalOpen={() => setModalOpen(true)}/>
         {/* <PostList
         remove={removePost}
         posts={sortedAndSearchedPosts}
@@ -61,7 +62,16 @@ function App() {
         isCompleted={true}
         key="completed-tasks"
       /> */}
-       <PostContainer/>
+       <PostContainer
+          titleList="All Tasks"
+          isCompleted={false}
+          key="all-tasks"
+        />
+         <PostContainer
+          titleList="Completed Tasks"
+          isCompleted={false}
+          key="all-tasks"
+        />
     </div>
     </div>
   );
