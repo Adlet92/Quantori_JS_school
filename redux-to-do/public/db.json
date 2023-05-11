@@ -1,19 +1,39 @@
 {
-  "posts": [
+  "tasks": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "title": "write someting",
+      "dateValue": "2023-05-25",
+      "completed": true,
+      "id": 97
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "title": "add someting",
+      "dateValue": "2023-05-17",
+      "completed": true,
+      "id": 108
+    },
+    {
+      "title": "da",
+      "dateValue": "2023-05-24",
+      "completed": true,
+      "id": 112
+    },
+    {
+      "title": "tbilisi",
+      "dateValue": "2023-05-17",
+      "completed": true,
+      "id": 113
+    },
+    {
+      "title": "task to complete",
+      "dateValue": "2023-05-09",
+      "completed": false,
+      "id": 121
+    },
+    {
+      "title": "201 task",
+      "body": "201 task",
+      "id": 150
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

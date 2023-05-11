@@ -20,7 +20,7 @@ export const fetchUsers = createAsyncThunk(
     'user/fetchAll',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get<ITask[]>('http://jsonplaceholder.typicode.com/users')
+            const response = await axios.get<ITask[]>('http://localhost:3006/tasks')
             return response.data
         }catch(e){
             return thunkAPI.rejectWithValue("Not possible to download the tasks")
