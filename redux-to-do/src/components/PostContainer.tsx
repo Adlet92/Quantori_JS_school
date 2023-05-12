@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IPost } from "../models/IPost";
 import { postAPI } from "../services/PostService"
 import PostItem from "./PostItem";
@@ -8,11 +8,14 @@ import PostItemComp from "./PostItemComp";
 interface PostListProps{
     titleList: string;
     isCompleted: boolean;
+    filter: {
+        query: string;
+      };
+    selectedTag: string;
 }
 
-const PostContainer = ({titleList, isCompleted}: PostListProps) => {
+const PostContainer = ({titleList, isCompleted, filter, selectedTag}: PostListProps) => {
     const {data: posts=[], error, isLoading} = postAPI.useFetchAllPostsQuery(1000)
-    // const [createPost, {}] = postAPI.useCreatePostMutation()
     const [updatePost, {}] = postAPI.useUpdatePostMutation()
     const [deletePost, {}] = postAPI.useDeletePostMutation()
     
@@ -20,24 +23,31 @@ const PostContainer = ({titleList, isCompleted}: PostListProps) => {
 
     }, [])
 
-    const filteredPosts = posts.filter(post => post.completed === isCompleted);
+    // const filteredTasks = posts.filter((post) => {
+    //     return (
+    //       post.title.toLowerCase().includes(filter.query.toLowerCase()) &&
+    //       post.completed === isCompleted
+    //     );
+    //   });
+    const filteredTasks = posts.filter((post) => {
+        if (selectedTag && post.tag !== selectedTag) {
+          return false;
+        }
+        return post.title.toLowerCase().includes(filter.query.toLowerCase()) && post.completed === isCompleted;
+      });
+    // const filteredPosts = posts.filter(post => post.completed === isCompleted);
 
-    if(!posts.length){
-        return (
-            <h3 style={{textAlign:'center'}}>There are no tasks</h3>
-        )
-    }
+    // if(!posts.length){
+    //     return (
+    //         <h3 style={{textAlign:'center'}}>There are no tasks</h3>
+    //     )
+    // }
 
-    if(!filteredPosts.length){
+    if(!filteredTasks.length){
         return (
             <h3 style={{textAlign:'center'}}>There are no {isCompleted ? 'completed' : 'incomplete'} tasks</h3>
         )
     }
-
-    // const handleCreate = async () =>{
-    //     const title = prompt()
-    //     await createPost({title, body: title} as IPost)
-    // }
 
     const handleRemove = (post: IPost) => {
         deletePost(post)
@@ -48,22 +58,12 @@ const PostContainer = ({titleList, isCompleted}: PostListProps) => {
     }
 
     return (
-        // <div>
-        //     <div className="notCompleted" id="ntc">
-        //         <h3>All Tasks</h3>
-        //         {isLoading && <h1>Loading.....</h1>}
-        //         {error && <h1>Error</h1>}
-        //         {posts && posts.map(post => 
-        //             <PostItem remove={handleRemove} update={handleUpdate} key={post.id} post={post}/>)
-        //         }
-        //     </div>
-        // </div>
         <div>
             {isLoading && <h1>Loading.....</h1>}
             {error && <h1>Error</h1>}
             <ol className={isCompleted ? "Completed" : "notCompleted"} id={isCompleted ? "cmplt" : "ntc"}>
                 <h3>{titleList}</h3>
-                {filteredPosts.map((post) => isCompleted ? 
+                {filteredTasks.map((post) => isCompleted ? 
                     <PostItemComp key={post.id} post={post}/> :
                     <PostItem remove={handleRemove} update={handleUpdate} key={post.id} post={post}/>
                 )}

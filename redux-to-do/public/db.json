@@ -1,82 +1,74 @@
 {
   "tasks": [
     {
-      "title": "12",
-      "dateValue": "2023-05-25",
-      "completed": true,
-      "id": 97
-    },
-    {
-      "title": "add someting",
-      "dateValue": "2023-05-17",
-      "completed": true,
-      "id": 108
-    },
-    {
-      "title": "da",
-      "dateValue": "2023-05-24",
-      "completed": true,
-      "id": 112
-    },
-    {
-      "title": "tbilisi",
-      "dateValue": "2023-05-17",
-      "completed": true,
-      "id": 113
-    },
-    {
-      "title": "task to complete",
-      "dateValue": "2023-05-24",
-      "completed": true,
-      "id": 121
-    },
-    {
-      "title": "201 task",
-      "body": "201 task",
-      "id": 150
-    },
-    {
-      "title": "yes",
-      "body": "yes",
-      "id": 153
-    },
-    {
-      "title": "with date",
-      "completed": false,
-      "dateValue": "2023-05-18",
-      "id": 155
-    },
-    {
-      "title": "task created",
-      "completed": false,
-      "dateValue": "",
-      "id": 156,
-      "tag": "work"
-    },
-    {
-      "title": "id2",
-      "completed": true,
-      "dateValue": "2023-05-17",
-      "id": 157
-    },
-    {
-      "title": "5",
-      "completed": true,
-      "dateValue": "2023-05-17",
-      "id": 158
-    },
-    {
-      "title": "new task",
-      "completed": true,
-      "dateValue": "2023-05-31",
-      "id": 159
-    },
-    {
       "title": "with tag",
       "completed": false,
-      "dateValue": "2023-05-18",
-      "tag": "health",
+      "dateValue": "",
+      "tag": "work",
       "id": 160
+    },
+    {
+      "title": "check",
+      "completed": true,
+      "dateValue": "2023-05-19",
+      "tag": "home",
+      "id": 161
+    },
+    {
+      "title": "ddd",
+      "completed": true,
+      "dateValue": "2023-05-16",
+      "tag": "health",
+      "id": 162
+    },
+    {
+      "title": "home taask2",
+      "completed": true,
+      "dateValue": "2023-05-25",
+      "tag": "home",
+      "id": 163
+    },
+    {
+      "title": "other task",
+      "completed": true,
+      "dateValue": "",
+      "tag": "other",
+      "id": 164
+    },
+    {
+      "title": "dddddd123213",
+      "completed": true,
+      "dateValue": "2023-05-24",
+      "tag": "work",
+      "id": 165
+    },
+    {
+      "title": "homework2",
+      "completed": true,
+      "dateValue": "2023-05-31",
+      "tag": "home",
+      "id": 167
+    },
+    {
+      "title": "adding some",
+      "completed": true,
+      "dateValue": "2023-05-17",
+      "tag": "work",
+      "id": 168
+    },
+    {
+      "title": "new task2",
+      "completed": false,
+      "dateValue": "2023-05-31",
+      "tag": "work",
+      "id": 169
+    },
+    {
+      "title": "aad",
+      "completed": false,
+      "dateValue": "2023-05-19",
+      "tag": "work",
+      "id": 170
     }
   ]
 }

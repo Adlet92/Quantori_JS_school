@@ -8,6 +8,9 @@ h3 {
 .Completed h3{
     margin-top: 40px;
 }
+li {
+    display: flex;
+}
 ol {
     list-style: none;
 }
@@ -18,13 +21,63 @@ ol li {
     font-weight: 400;
 }
 input[type="checkbox"]{
-    height: 21px;
+    /* height: 21px; */
     width: 21px;
     margin-right: 20px;
     border-radius: 4px;
 }
+.del_edit_buttons{
+    margin-left: auto;
+    margin-top: 11px;
+}
+.post_tag{
+    margin-top: 11px;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 6px;
+    padding: 2px 8px;
+    text-align: center;
+    width: 52px;
+    height: 19px;
+    background-color: rgba(60, 134, 244, 0.31);
+    color: #0053CF;
+}
+.post_tag.health {
+    background-color: rgba(60, 134, 244, 0.31);
+    color: #0053CF;
+  }
+  
+  .post_tag.work {
+    background-color: #E8D7FF;
+    color: #9747FF;
+  }
+  
+  .post_tag.home {
+    background-color: #E2F7E2;
+    color: #639462;
+  }
+  
+  .post_tag.other {
+    background-color: #FFECC7;
+    color: #EA8C00;
+  }
+  
 .Completed .compl{
-    color: #D3D3D3;
+    color: #838383;
+}
+.post_tag_compl{
+    color: #838383;
+    margin-top: 11px;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 6px;
+    padding: 2px 8px;
+    text-align: center;
+    width: 52px;
+    height: 19px;
+    background-color: rgba(245, 245, 245, 1);
 }
 .deleteIcon {
     float: right;

@@ -7,9 +7,14 @@ interface PostItemCompProps {
 
 const PostItemComp = ({ post }: PostItemCompProps) => {
     return (
-      <li><input type="checkbox" checked disabled={true}/>
-        <label className="compl">{post.title}</label>
+      <div>
+        <li><input type="checkbox" checked disabled={true}/>
+        <div>
+        <label className="compl">Completed {post.title}</label>
+        <h5 className="post_tag_compl">{post.tag}</h5>
+        </div>
        </li>
+      </div>
     );
 };
 

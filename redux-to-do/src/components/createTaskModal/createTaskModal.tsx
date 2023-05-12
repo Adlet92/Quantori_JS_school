@@ -19,6 +19,7 @@ interface CreateTaskModalProps {
     const CreateTaskModal = ({type, modalOpen, setModalOpen, task, handleTaskUpdate}: CreateTaskModalProps) => {
     // const [post, setPost] = useState<IPost>({title:'', dateValue:'', completed: false})
     const [post, setPost] = useState<IPost>({title: task ?? '', dateValue:'', completed: false, tag:''})
+    const isDisabled = !post.title || !post.dateValue || !post.tag;
     const minDate = new Date().toISOString().split('T')[0];
     if (!modalOpen) {
         return null;
@@ -66,7 +67,8 @@ interface CreateTaskModalProps {
                             title={post.title} 
                             dateValue={post.dateValue}
                             tag = {post.tag}
-                            handleSave={handleSave}/>
+                            handleSave={handleSave}
+                            isDisabled={isDisabled}/>
                     </div>
                 </div>
                 )

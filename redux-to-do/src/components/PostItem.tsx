@@ -45,12 +45,19 @@ const PostItem: FC<PostItemProps> = ({post, remove, update }) =>{
     }
 
     return (
-        <>
+    <div>
        <li><input id="check"  type="checkbox" checked={post.completed} onChange={handleCompletedChange} />
-            <label id="label-title">{ post.title}</label>
-            <h5>{post.tag}</h5>
+       <div>
+       <label id="label-title">{ post.title}</label>
+            {/* <h5 className="post_tag">{post.tag}</h5> */}
+            <h5 className={`post_tag ${post.tag === 'health' ? 'health' : post.tag === 'work' ? 'work' : post.tag === 'home' ? 'home' : 'other'}`}>{post.tag}</h5>
+        </div>
+        <div className="del_edit_buttons">
             <button className="deleteIcon" onClick={handleRemove}><img src={deleteImage} alt=""/></button>
             <button className="deleteIcon" onClick={handleUpdate}><img src={editImage} alt=""/></button>
+        </div>
+            
+            
         </li>
         <CreateTaskModal
             type="update"
@@ -61,7 +68,7 @@ const PostItem: FC<PostItemProps> = ({post, remove, update }) =>{
             setModalOpen={setModalOpen}
             handleTaskUpdate={handleTaskUpdate}
         />
-        </>
+        </div>
         
     )
 }

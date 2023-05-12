@@ -34,6 +34,9 @@
     padding: 16px 32px;
     border-radius: 12px;
 }
+.addTask2.active {
+  background-color: #3C86F4;
+}
 .popup-header {
     background-color: #fff;
     color: #000000;
@@ -64,6 +67,7 @@
     flex-direction: row;
     justify-content: space-between;
   }
+
   .health,
   .work,
   .home,
@@ -80,6 +84,14 @@
     height: 19px;
     cursor: pointer;
   }
+  .health.selected,
+  .work.selected,
+  .home.selected,
+  .other.selected {
+  background-color: #ffefc7;
+  color: #9b7e46;
+}
+
   .health {
     background-color: rgba(60, 134, 244, 0.31);
     color: #0053CF;
@@ -96,6 +108,8 @@
     background-color: #FFECC7;
     color: #EA8C00;
   }
+
+  
   .calendar {
     width: 117px;
     height: 40px;

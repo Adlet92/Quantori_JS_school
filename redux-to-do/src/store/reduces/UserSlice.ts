@@ -1,10 +1,11 @@
 import { ITask } from "../../models/ITask";
 import {PayloadAction, createSlice} from "@reduxjs/toolkit";
 import { fetchUsers } from "./ActionCreators";
+import { IPost } from "../../models/IPost";
 
 
 interface UserState{
-    users: ITask[];
+    users: IPost[];
     isLoading: boolean;
     error: string;
 }
@@ -20,7 +21,7 @@ export const userSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [fetchUsers.fulfilled.type]: (state, action: PayloadAction<ITask[]>) =>{
+        [fetchUsers.fulfilled.type]: (state, action: PayloadAction<IPost[]>) =>{
             state.isLoading = false;
             state.error = ''
             state.users = action.payload;

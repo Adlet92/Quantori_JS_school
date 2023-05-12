@@ -1,9 +1,19 @@
 import { useState, useEffect } from "react";
 import './Weather.css'
-import {WeatherData} from '../Interfaces/interfaces'
+
+interface WeatherData {
+  current: {
+      temp_c: number;
+      condition: {
+        icon: string;
+      };
+    },
+  location:{
+      name:string
+  }
+}
 
 const apiKey = "8fea051a312349ab8b7174641231504";
-
 
 const Weather = () => {
   const [weather, setWeather] = useState<WeatherData | undefined>(undefined);
