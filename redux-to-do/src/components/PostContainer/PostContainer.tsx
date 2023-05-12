@@ -1,24 +1,20 @@
-// import { useEffect, useState } from "react";
+
 import { useEffect } from "react";
-import { IPost } from "../models/IPost";
-import { postAPI } from "../services/TaskService"
+import { IPost } from "../../models/IPost";
+import { postAPI } from "../../services/TaskService"
 import PostItem from "./PostItem";
-import './UI/Inc.css'
+import '../UI/Inc.css'
 import PostItemComp from "./PostItemComp";
 
 interface postListProps{
     titleList: string;
     isCompleted: boolean;
-    filter: {
-        query: string;
-      };
+    filter:string;
     selectedTag: string;
 }
 
 const PostContainer = ({titleList, isCompleted, filter, selectedTag}: postListProps) => {
     const {data: posts=[], error, isLoading} = postAPI.useFetchAllPostsQuery(1000)
-    // const [updatePost, {}] = postAPI.useUpdatePostMutation()
-    // const [deletePost, {}] = postAPI.useDeletePostMutation()
     const [updatePost] = postAPI.useUpdatePostMutation()
     const [deletePost] = postAPI.useDeletePostMutation()
     
@@ -30,7 +26,7 @@ const PostContainer = ({titleList, isCompleted, filter, selectedTag}: postListPr
         if (selectedTag && post.tag !== selectedTag) {
           return false;
         }
-        return post.title.toLowerCase().includes(filter.query.toLowerCase()) && post.completed === isCompleted;
+        return post.title.toLowerCase().includes(filter.toLowerCase()) && post.completed === isCompleted;
       });
 
     if(!filteredTasks.length){

@@ -13,7 +13,7 @@ interface modalFooterProps {
 }
 
   const ModalFooter = ({setIsModalOpen, title, dateValue, tag, type, handleSave, isDisabled}: modalFooterProps) => {
-    // const [createPost, {}] = postAPI.useCreatePostMutation()
+
     const [createPost] = postAPI.useCreatePostMutation()
     const handleCreate = async () =>{
         await createPost({title, completed: false, dateValue, tag} as IPost);

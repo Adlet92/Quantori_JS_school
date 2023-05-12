@@ -16,31 +16,21 @@ interface createTaskModalProps {
   }
 
     const CreateTaskModal = ({type, isModalOpen, setIsModalOpen, task, handleTaskUpdate}: createTaskModalProps) => {
-    // const [post, setPost] = useState<IPost>({title: task ?? '', dateValue:'', completed: false, tag:''})
+
     const [title, setTitle] = useState<string>(task ?? '');
     const [dateValue, setDateValue] = useState<string>('');
     const [tag, setTag] = useState<string>('');
-     const isDisabled = !title || !dateValue || !tag;
-    // const isDisabled = !post.title || !post.dateValue || !post.tag;
+    const isDisabled = !title || !dateValue || !tag;
+
     const minDate = new Date().toISOString().split('T')[0];
     if (!isModalOpen) {
         return null;
       }
-      // const handleSelectTag = (tagName: string) => {
-      //   setPost({ ...post, tag: tagName });
-      // };
+
       const handleSelectTag = (tagName: string) => {
         setTag(tagName);
       };
 
-      // const handleSave = () => {
-      //   if (post.title.trim() === '') {
-      //     return;
-      //   }
-      //   if (handleTaskUpdate) {
-      //     handleTaskUpdate(post.title, post.dateValue, post.tag);
-      //   }
-      // };
       const handleSave = () => {
         if (title.trim() === '') {
           return;
@@ -64,8 +54,6 @@ interface createTaskModalProps {
                                 placeholder="Task title" 
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
-                                // value={post.title}
-                                // onChange={(e) => setPost({...post, title: e.target.value})}
                                 />
                             <div className="container-date-options">
                                 <CategoryOptions onSelectTag={handleSelectTag}/>
@@ -73,9 +61,6 @@ interface createTaskModalProps {
                                     id="date-choose" 
                                     className="calendar" 
                                     type="date"
-                                    // value={post.dateValue}
-                                    // min={minDate}
-                                    // onChange={(e) => setPost({...post, dateValue: e.target.value})}
                                     value={dateValue}
                                     min={minDate}
                                     onChange={(e) => setDateValue(e.target.value)}
@@ -85,11 +70,6 @@ interface createTaskModalProps {
                         <ModalFooter 
                             type={type} 
                             setIsModalOpen={setIsModalOpen} 
-                            // title={post.title} 
-                            // dateValue={post.dateValue}
-                            // tag = {post.tag}
-                            // handleSave={handleSave}
-                            // isDisabled={isDisabled}
                             title={title}
                             dateValue={dateValue}
                             tag={tag}

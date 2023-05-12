@@ -1,9 +1,9 @@
-import { IPost } from "../models/IPost";
-import deleteImage from "./img/Shape.svg"
-import editImage from "./img/edit-1.svg"
-import './UI/Inc.css'
+import { IPost } from "../../models/IPost";
+import deleteImage from "../img/Shape.svg"
+import editImage from "../img/edit-1.svg"
+import '../UI/Inc.css'
 import { FC, useState } from "react";
-import CreateTaskModal from "./CreateTaskModal/CreateTaskModal";
+import CreateTaskModal from "../CreateTaskModal/CreateTaskModal";
 
 
 interface postItemProps {

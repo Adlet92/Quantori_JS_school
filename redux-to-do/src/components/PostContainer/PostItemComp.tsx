@@ -1,5 +1,5 @@
 import React from "react";
-import { IPost } from "../models/IPost";
+import { IPost } from "../../models/IPost";
 
 interface postItemCompProps {
     post: IPost;

@@ -1,4 +1,4 @@
-import { ITask } from "../../models/ITask";
+
 import {PayloadAction, createSlice} from "@reduxjs/toolkit";
 import { fetchUsers } from "./ActionCreators";
 import { IPost } from "../../models/IPost";
