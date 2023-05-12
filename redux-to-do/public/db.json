@@ -57,16 +57,9 @@
       "id": 170
     },
     {
-      "title": "todays task2",
-      "completed": false,
-      "dateValue": "2023-05-30",
-      "tag": "other",
-      "id": 174
-    },
-    {
-      "title": "just added2",
-      "completed": false,
-      "dateValue": "2023-05-30",
+      "title": "just added3",
+      "completed": true,
+      "dateValue": "2023-05-31",
       "tag": "health",
       "id": 175
     },
@@ -121,7 +114,7 @@
     },
     {
       "title": "new item",
-      "completed": false,
+      "completed": true,
       "dateValue": "2023-05-17",
       "tag": "health",
       "id": 187

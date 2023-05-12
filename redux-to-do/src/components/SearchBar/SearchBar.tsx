@@ -8,9 +8,10 @@ interface searchProps {
     setFilter: (value: string) => void;
     setIsModalOpen: (open: boolean) => void;
     setSelectedTag: (tag: string) => void;
+    handleTagClick: (tag: string) => void;
   }
 
-const SearchBar = ({filter, setFilter,setIsModalOpen, setSelectedTag}: searchProps) => {
+const SearchBar = ({filter, setFilter,setIsModalOpen, setSelectedTag, handleTagClick}: searchProps) => {
 
   const navigate = useNavigate();
  
@@ -59,7 +60,7 @@ const SearchBar = ({filter, setFilter,setIsModalOpen, setSelectedTag}: searchPro
                     id="find" 
                     placeholder="Search task"/> 
                 <button id="myBtn" onClick={() => setIsModalOpen(true)}>+New Task</button>
-                <TagSelector setSelectedTag={(tag) => setSelectedTag(tag)}/>
+                <TagSelector handleTagClick={handleTagClick} setSelectedTag={(tag) => setSelectedTag(tag)}/>
               </div>
         );
     };

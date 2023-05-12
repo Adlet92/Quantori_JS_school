@@ -5,6 +5,7 @@ import PostContainer from './components/PostContainer/PostContainer';
 import SearchBar from './components/SearchBar/SearchBar';
 import Weather from './components/Weather/Weather';
 import CreateTaskModal from './components/CreateTaskModal/CreateTaskModal';
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
@@ -13,6 +14,12 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedTag, setSelectedTag] = useState<string>('');
 
+  const navigate = useNavigate();
+
+  const handleTagClick = (tag: string) => {
+    setSelectedTag(tag);
+    navigate(`/tasks/${tag}`);
+  };
 
   return (
     <div className="container">
@@ -26,7 +33,9 @@ function App() {
             filter={filter}
             setFilter={setFilter}
             setIsModalOpen={() => setIsModalOpen(true)}
-            setSelectedTag={setSelectedTag}/>
+            setSelectedTag={setSelectedTag}
+            handleTagClick={handleTagClick}
+            />
        <PostContainer
           filter={filter}
           selectedTag={selectedTag}
