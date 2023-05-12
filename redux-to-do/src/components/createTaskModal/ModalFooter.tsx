@@ -1,9 +1,9 @@
 import React from 'react';
-import { postAPI } from '../../services/PostService';
+import { postAPI } from '../../services/TaskService';
 import { IPost } from '../../models/IPost';
 
-interface ModalFooterProps {
-  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+interface modalFooterProps {
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;
   dateValue: string;
   tag: string;
@@ -12,28 +12,27 @@ interface ModalFooterProps {
   isDisabled: boolean;
 }
 
-// const ModalFooter = ({setModalOpen, title, dateValue, type}: ModalFooterProps) => {
-  const ModalFooter = ({setModalOpen, title, dateValue, tag, type, handleSave, isDisabled}: ModalFooterProps) => {
-    const [createPost, {}] = postAPI.useCreatePostMutation()
+  const ModalFooter = ({setIsModalOpen, title, dateValue, tag, type, handleSave, isDisabled}: modalFooterProps) => {
+    // const [createPost, {}] = postAPI.useCreatePostMutation()
+    const [createPost] = postAPI.useCreatePostMutation()
     const handleCreate = async () =>{
         await createPost({title, completed: false, dateValue, tag} as IPost);
-        setModalOpen(false);
+        setIsModalOpen(false);
     }
     const handleUpdate = () => {
       handleSave?.(title);
-      setModalOpen(false);
+      setIsModalOpen(false);
     }
     const buttonClass = `addTask2 ${isDisabled ? '' : 'active'}`;
 
   return (
     <div className="popup-footer">
-        <button className="close" onClick={() => setModalOpen(false)}>Close</button>
+        <button className="close" onClick={() => setIsModalOpen(false)}>Close</button>
         {type === 'update' ? (
         <button className={buttonClass}  disabled={isDisabled} id="task-button" onClick={handleUpdate}>Update Task</button>
       ) : (
         <button className={buttonClass}  disabled={isDisabled} id="task-button" onClick={handleCreate}>Add Task</button>
       )}
-        {/* <button className="addTask2" id="task-button" onClick={handleCreate}>{type === 'update' ? 'Update' : 'Add'} Task</button> */}
       </div>
   )
 }

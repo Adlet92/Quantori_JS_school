@@ -1,12 +1,11 @@
 import React from 'react'
 
-interface ModalHeaderProps {
+interface modalHeaderProps {
   type: string;
 }
-const ModalHeader = ({type}:ModalHeaderProps) => {
+const ModalHeader = ({type}:modalHeaderProps) => {
   return (
     <div className="popup-header">
-      {/* <h2>Add New Task</h2> */}
       <h2>{type === 'update' ? 'Update' : 'Add New'} Task</h2>
     </div>
   )

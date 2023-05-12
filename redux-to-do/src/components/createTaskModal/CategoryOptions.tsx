@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-interface CategoryOptionsProps {
+interface categoryOptionsProps {
   onSelectTag: (tagName: string) => void;
 }
-const CategoryOptions = ({ onSelectTag } : CategoryOptionsProps) => {
+const CategoryOptions = ({ onSelectTag } : categoryOptionsProps) => {
   const [selectedTag, setSelectedTag] = useState('');
   const handleTagClick = (tagName: string) => {
     setSelectedTag(tagName);
@@ -21,18 +21,6 @@ const CategoryOptions = ({ onSelectTag } : CategoryOptionsProps) => {
 
   return (
     <div className="option">
-      {/* <div className="option health" onClick={() => handleTagClick('health')}>
-        health
-      </div>
-      <div className="option work" onClick={() => handleTagClick('work')}>
-        work
-      </div>
-      <div className="option home" onClick={() => handleTagClick('home')}>
-        home
-      </div>
-      <div className="option other" onClick={() => handleTagClick('other')}>
-        other
-      </div> */}
        <div className={getTagClassName('health')} onClick={() => handleTagClick('health')}>
         health
       </div>

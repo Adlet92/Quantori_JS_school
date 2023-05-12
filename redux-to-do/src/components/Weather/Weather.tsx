@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import './Weather.css'
 
-interface WeatherData {
+interface weatherData {
   current: {
       temp_c: number;
       condition: {
@@ -16,7 +16,7 @@ interface WeatherData {
 const apiKey = "8fea051a312349ab8b7174641231504";
 
 const Weather = () => {
-  const [weather, setWeather] = useState<WeatherData | undefined>(undefined);
+  const [weather, setWeather] = useState<weatherData | undefined>(undefined);
 
   useEffect(() => {
     const getLocationAndWeather = async () => {

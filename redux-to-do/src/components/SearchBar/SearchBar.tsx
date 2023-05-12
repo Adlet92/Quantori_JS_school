@@ -1,16 +1,17 @@
 import React from 'react'
 import './SearchBar.css'
+import TagSelector from './TagSelector';
 
-interface Props {
+interface searchProps {
     filter: {
         query: string;
       };
-    setFilter: (filter: { query: string }) => void;
-    setModalOpen: (open: boolean) => void;
+    setFilter: (filter: { query: string}) => void;
+    setIsModalOpen: (open: boolean) => void;
     setSelectedTag: (tag: string) => void;
   }
 
-const SearchBar = ({filter, setFilter,setModalOpen, setSelectedTag}: Props) => {
+const SearchBar = ({filter, setFilter,setIsModalOpen, setSelectedTag}: searchProps) => {
         return (
             <div className="search-wrapper">
                 <input
@@ -19,14 +20,8 @@ const SearchBar = ({filter, setFilter,setModalOpen, setSelectedTag}: Props) => {
                     type="search" 
                     id="find" 
                     placeholder="Search task"/> 
-                <button id="myBtn" onClick={() => setModalOpen(true)}>+New Task</button>
-                <select id="tag-selector" onChange={(e) => setSelectedTag(e.target.value)}>
-                    <option value="">All Tags</option>
-                    <option value="health">health</option>
-                    <option value="work">work</option>
-                    <option value="home">home</option>
-                    <option value="other">other</option>
-                 </select>
+                <button id="myBtn" onClick={() => setIsModalOpen(true)}>+New Task</button>
+                <TagSelector setSelectedTag={(tag) => setSelectedTag(tag)}/>
               </div>
         );
     };

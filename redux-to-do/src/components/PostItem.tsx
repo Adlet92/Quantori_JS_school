@@ -6,15 +6,15 @@ import { FC, useState } from "react";
 import CreateTaskModal from "./CreateTaskModal/CreateTaskModal";
 
 
-interface PostItemProps {
+interface postItemProps {
     post: IPost;
     remove: (post: IPost) => void;
     update: (post:IPost) => void;
 }
 
-const PostItem: FC<PostItemProps> = ({post, remove, update }) =>{
+const PostItem: FC<postItemProps> = ({post, remove, update }) =>{
 
-    const [modalOpen, setModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentTask, setCurrentTask] = useState(post.title);
     const [currentDateValue, setCurrentDateValue] = useState(post.dateValue);
     const [currentTag, setCurrentTag] = useState(post.tag);
@@ -24,21 +24,17 @@ const PostItem: FC<PostItemProps> = ({post, remove, update }) =>{
         event.stopPropagation()
         remove(post)
     }
-    // const handleUpdate = (event: React.MouseEvent) => {
-    //     // const title = prompt() || ""
-    //     // update({...post, title})
-    //     setModalOpen(true);
-    // }
+
     const handleUpdate = (event: React.MouseEvent) => {
         setCurrentTask(post.title);
         setCurrentDateValue(post.dateValue);
         setCurrentTag(post.tag);
-        setModalOpen(true);
+        setIsModalOpen(true);
     }
 
     const handleTaskUpdate = (task: string, dateValue: string, tag: string) => {
         update({...post, title: task, dateValue, tag})
-        setModalOpen(false);
+        setIsModalOpen(false);
     }
     const handleCompletedChange = () => {
         update({...post, completed: !post.completed})
@@ -49,7 +45,6 @@ const PostItem: FC<PostItemProps> = ({post, remove, update }) =>{
        <li><input id="check"  type="checkbox" checked={post.completed} onChange={handleCompletedChange} />
        <div>
        <label id="label-title">{ post.title}</label>
-            {/* <h5 className="post_tag">{post.tag}</h5> */}
             <h5 className={`post_tag ${post.tag === 'health' ? 'health' : post.tag === 'work' ? 'work' : post.tag === 'home' ? 'home' : 'other'}`}>{post.tag}</h5>
         </div>
         <div className="del_edit_buttons">
@@ -64,8 +59,8 @@ const PostItem: FC<PostItemProps> = ({post, remove, update }) =>{
             task={currentTask}
             dateValue={currentDateValue}
             tag = {currentTag}
-            modalOpen={modalOpen}
-            setModalOpen={setModalOpen}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
             handleTaskUpdate={handleTaskUpdate}
         />
         </div>

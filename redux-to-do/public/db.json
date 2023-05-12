@@ -57,18 +57,25 @@
       "id": 168
     },
     {
-      "title": "new task2",
-      "completed": false,
-      "dateValue": "2023-05-31",
-      "tag": "work",
-      "id": 169
-    },
-    {
       "title": "aad",
-      "completed": false,
+      "completed": true,
       "dateValue": "2023-05-19",
       "tag": "work",
       "id": 170
+    },
+    {
+      "title": "todays task2",
+      "completed": false,
+      "dateValue": "2023-05-30",
+      "tag": "other",
+      "id": 174
+    },
+    {
+      "title": "just added",
+      "completed": false,
+      "dateValue": "2023-05-31",
+      "tag": "home",
+      "id": 175
     }
   ]
 }
