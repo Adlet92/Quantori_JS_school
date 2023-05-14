@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Clonify dashboard</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<!-- Sidebar -->
+		<nav class="sidebar">
+			<div class="sidebar_top">
+				<div class="logo"></div>
+				<div class="sidebar_header">Dashboard</div>
+				<div class="navigation">
+					<div class="navigation_item">
+						<div
+							class="navigation_name navigation_name_active list-icon list-icon_active dashboard-icon"
+						>
+							Dashboard
+						</div>
+						<p class="navigation_subname navigation_subname_active"
+							>Analitycs</p>
+						<p class="navigation_subname">Finance</p>
+						<p class="navigation_subname">Job Board</p>
+					</div>
+					<div class="navigation_item">
+						<div class="navigation_name list-icon messages-icon">Messages</div>
+					</div>
+					<div class="navigation_item">
+						<div class="navigation_name list-icon friends-icon">Friends</div>
+					</div>
+					<div class="navigation_item">
+						<div class="navigation_name list-icon apps-icon">Apps</div>
+					</div>
+				</div>
+				<div class="sidebar_header">Pages</div>
+				<div class="navigation">
+					<div class="navigation_item">
+						<div class="navigation_name list-icon help-center-icon">
+							Help Center
+						</div>
+					</div>
+					<div class="navigation_item">
+						<div class="navigation_name list-icon file-manager-icon">
+							File Manager
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-menu">
+				<span class="footer-menu_icon settings-icon"></span>
+				<span class="footer-menu_icon logout-icon"></span>
+				<span class="footer-menu_icon globe-icon"></span>
+			</div>
+		</nav>
+		<main>
+			<!-- Header -->
+			<div class="header">
+				<div class="logo_mobile"></div>
+				<div class="search-bar">
+					<input
+						type="text"
+						name="search"
+						id="search"
+						placeholder="Search..."
+						class="search-bar_input"
+					/>
+				</div>
+				<div class="header_actions">
+					<div
+						class="header_logo header_notification-icon header_desktop"
+					></div>
+					<div
+						class="header_logo header_calendar-icon header_desktop"
+					></div>
+					<div
+						class="header_logo header_apps-icon header_desktop"
+					></div>
+					<div class="header_logo header_user-icon"></div>
+				</div>
+			</div>
+			<div class="search-bar-mobile">
+				<input
+						type="text"
+						name="search"
+						id="search"
+						placeholder="Search..."
+						class="search-bar_input-mobile"
+					/>
+			</div>
+			<!-- Main body -->
+			<div class="body card">
+				<div class="body_text">
+					<h3 class="body_header">Unlock premium stats</h3>
+					<p class="body_subtext">
+						Get up to 10TB of storage for a limited time
+					</p>
+				</div>
+				<button class="body_button">
+					<span class="body_button-logo"></span> <span> Upgrade</span>
+				</button>
+			</div>
+			<!-- Cards -->
+			<div class="card-data">
+				<div class="card-data-wrapper">
+					<div class="card-data-card card">
+						<div class="card-data-text">
+							<h3 class="card-data-header">Revenue</h3>
+							<p class="card-data-subtext">$56,945</p>
+						</div>
+						<div class="card-data-dynamic">
+							<div class="badge badge_positive">+45%</div>
+							<div class="card-data-from">From 4.6%</div>
+						</div>
+					</div>
+					<div class="card-data-card card">
+						<div class="card-data-text">
+							<h3 class="card-data-header">Users</h3>
+							<p class="card-data_subtext">76.8%</p>
+						</div>
+						<div class="card-data-dynamic">
+							<div class="badge badge_negative">-1.7%</div>
+							<div class="card-data-from">From 4.6%</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-data-wrapper">
+					<div class="card-data-card card">
+						<div class="card-data-text">
+							<h3 class="card-data-header">New signups</h3>
+							<p class="card-data-subtext">116</p>
+						</div>
+						<div class="card-data-dynamic">
+							<div class="badge">0.00</div>
+							<div class="card-data-from"></div>
+						</div>
+					</div>
+					<div class="card-data-card card">
+						<div class="card-data-text">
+							<h3 class="card-data-header">Retention</h3>
+							<p class="card-data-subtext">12.67%</p>
+						</div>
+						<div class="card-data-dynamic">
+							<div class="badge badge_positive">+0.6%</div>
+							<div class="card-data-from">From 4.6%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Graph -->
+			<div class="card widget">
+				<div class="widget_top">
+					<h3 class="widget_header">Performance</h3>
+					<span class="widget_menu"></span>
+				</div>
+				<div class="widget_body">
+					<div class="graph_table">
+						<div class="graph_value div0">0</div>
+						<div class="graph_value div1">100</div>
+						<div class="graph_value div2">200</div>
+						<div class="graph_value div3">300</div>
+						<div class="graph_value div4">400</div>
+						<div class="graph_value div5">Sun</div>
+						<div class="graph_value div6">Mon</div>
+						<div class="graph_value div7">Tue</div>
+						<div class="graph_value div8">Wed</div>
+						<div class="graph_value div9">Thu</div>
+						<div class="graph_value div10">Fri</div>
+						<div class="graph_value div11">Sat</div>
+						<div class="div12">
+							<img
+								class="graph_image"
+								src="./img/waveLine.svg"
+							/>
+							<img
+								class="graph_image-mobile"
+								src="./img/waveLineMobile.svg"
+							/>
+						</div>
+					</div>
+					<div class="widget_legend">
+						<span class="legend_element"
+							><span class="legend_icon legend_icon_blue"></span>
+							Instagram</span
+						><span class="legend_element"
+							><span class="legend_icon legend_icon_green"></span
+							>Facebook</span
+						>
+					</div>
+				</div>
+			</div>
+			<!-- Installed apps -->
+			<div class="installed-apps card widget">
+				<div class="widget_top">
+					<h3 class="widget_header">Installed apps</h3>
+					<span class="widget_menu"></span>
+				</div>
+				<div class="widget_body table">
+					<div class="table_scroll-wrapper">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Source</th>
+									<th>Amount</th>
+									<th>Status</th>
+									<th>User ID</th>
+									<th>Joined</th>
+									<th>Group</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="table_source">
+										<span class="table_app-icon" id="zepplin-icon"></span
+										><span class="table_source-text">Zepplin</span>
+									</td>
+									<td>686.00</td>
+									<td><div class="badge badge_positive">Active</div></td>
+									<td>114423</td>
+									<td>October</td>
+									<td>Design</td>
+								</tr>
+								<tr>
+									<td class="table_source">
+										<span class="table_app-icon" id="figma-icon"></span
+										><span class="table_source-text">Figma</span>
+									</td>
+									<td>864.00</td>
+									<td><div class="badge badge_pending">Pending</div></td>
+									<td>76223</td>
+									<td>June</td>
+									<td>Finance</td>
+								</tr>
+								<tr>
+									<td class="table_source">
+										<span class="table_app-icon" id="meta-icon"></span
+										><span class="table_source-text">Meta</span>
+									</td>
+									<td>176.00</td>
+									<td><div class="badge">Cancelled</div></td>
+									<td>89453</td>
+									<td>March</td>
+									<td>Coding</td>
+								</tr>
+								<tr>
+									<td class="table_source">
+										<span class="table_app-icon" id="angular-icon"></span
+										><span class="table_source-text">Angular</span>
+									</td>
+									<td>49.00</td>
+									<td><div class="badge badge_positive">Active</div></td>
+									<td>11467</td>
+									<td>February</td>
+									<td>Marketing</td>
+								</tr>
+								<tr>
+									<td class="table_source">
+										<span class="table_app-icon" id="vue-icon"></span
+										><span class="table_source-text">Vue</span>
+									</td>
+									<td>999.00</td>
+									<td><div class="badge badge_positive">Active</div></td>
+									<td>67385</td>
+									<td>October</td>
+									<td>Finance</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="table_pagination">
+						<span class="table_pages-icon table_pages-prev"></span>
+						<span class="table_pages-current">1</span> /
+						<span class="table_pages-max">15</span>
+						<span class="table_pages-icon table_pages-next"></span>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
