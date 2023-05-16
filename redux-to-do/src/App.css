@@ -1,0 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito';
+}
+body{
+  height: 100vh;
+}
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 10px;
+}
+.todo-app {
+  width: 71.6%;
+  background: #fff;
+  margin: 44px 164px 278px 165px;
+  padding: 0px 0px 0px;
+  border-radius: 10px;
+}
+.todo-app h2 {
+  color: #1D1D1D;
+  display: flex;
+  align-items: center;
+  margin-bottom: 44px;
+  font-size: 32px;
+  font-weight: 700;
+}
